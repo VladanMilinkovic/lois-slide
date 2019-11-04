@@ -1,0 +1,3143 @@
+@font-face {
+  font-family: "IntegralExtaBold";
+  src: url(../fonts/IntegralCF-ExtraBold.woff) format("truetype");
+}
+
+@font-face {
+  font-family: "FoundersGroteskText";
+  src: url(../fonts/foundersgrotesktext-light.woff) format("truetype");
+}
+
+@font-face {
+  font-family: "FoundersGroteskTextBold";
+  src: url(../fonts/foundersgrotesktext-medium.woff) format("truetype");
+}
+
+@font-face {
+  font-family: "CaveatBold";
+  src: url(../fonts/Caveat-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "CaveatRegular";
+  src: url(../fonts/Caveat-Regular.ttf) format("truetype");
+}
+
+// Mixins
+@mixin breakpoint($point) {
+  // from 2048px
+  @if $point==hugeScreen {
+    @media (min-width: $hugeScreen) {
+      @content;
+    }
+  }
+  // from 1920px
+  @if $point==bigScreen {
+    @media (min-width: 1920px) {
+      @content;
+    }
+  }
+    // from 1200px
+  @else if $point==bigDesktop {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+    // from 1024px
+  @else if $point==desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+    // from 600px
+  @else if $point==tablet {
+    @media (min-width: 600px) {
+      @content;
+    }
+  }
+
+    // from 0px to 599px
+  @else if $point==mobileScreen {
+    @media (min-width: 0px) and (max-width: 599px) {
+      @content;
+    }
+  }
+    // mobiles up to 599px height in landscape orientation
+  @else if $point==mobileScreenLandscape {
+    @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
+      @content;
+    }
+  }
+    // from 600px to 899px
+  @else if $point==tabletScreen {
+    @media (min-width: 600px) and (max-width: 899px) {
+      @content;
+    }
+  }
+    // from 600px to 1366px in landscape orientation
+  @else if $point==tabletScreenLandscape {
+    @media (min-width: 600px) and (max-width: 1366px) and (min-height: 600px) and (max-height:1024px) and (orientation: landscape) {
+      @content;
+    }
+  }
+
+  @else if $point==iPad {
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+      @content
+    }
+  }
+
+  @else if $point==iPadLandscape {
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+      @content;
+    }
+  }
+
+  @else if $point==iPadProPortrait {
+    @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  }
+
+  @else if $point==iPadProLandscape {
+    @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+      @content;
+    }
+  }
+
+    // from 900px to 1199px
+  @else if $point==smallScreen {
+    @media (min-width: 900px) and (max-width: 1199px) {
+      @content;
+    }
+  }
+    // from 1200px to 1799px
+  @else if $point==mediumScreen {
+    @media (min-width: 1200px) and (max-width: 1799px) {
+      @content;
+    }
+  }
+    // from 1800px
+  @else if $point==largeScreen {
+    @media (min-width: 1800px) {
+      @content;
+    }
+  }
+}
+
+@mixin multiple-media($media...) {
+  @each $query in $media {
+    @include breakpoint($query) {
+      @content
+    }
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include breakpoint(bigDesktop) {
+    margin-left: 7vw;
+    width: 86vw;
+    margin-right: 7vw;
+  }
+
+}
+
+html {
+  overflow-x: hidden;
+  font-size: 12px;
+  font-family: "FoundersGroteskText";
+  background-image: url(../images/half.png);
+  background-repeat: repeat;
+
+  //from 1200px to 1366px
+  @media screen and (min-width: 1200px) and (max-width: 1366px) {
+    font-size: 12px;
+  }
+
+  //from 1367px to 1600px
+  @media screen and (min-width: 1367px) and (max-width: 1600px) {
+    font-size: 14px;
+  }
+
+  //from 1920px
+  @media screen and (min-width: 1601px) {
+    font-size: 16px;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  &:active {
+    text-decoration: none;
+  }
+}
+h1,h2,h3,h4,h5,h6 {
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+// Navigation
+.lois-navigation {
+  height: 4rem;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  background-color: #000000;
+  color: #fff;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+  z-index: 100000;
+
+  @include breakpoint(mobileScreen) {
+    margin-bottom: .8rem;
+  }
+
+  @include breakpoint(bigDesktop) {
+    width: 86vw;
+  }
+
+  &--icon {
+    width: 1rem;
+    margin-right: 1.5rem;
+
+    @include breakpoint(mobileScreen) {
+      margin-right: .8rem;
+    }
+
+  }
+
+  &--address {
+    font-family: "FoundersGroteskText";
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    display: flex;
+    align-items: center;
+
+    @include breakpoint(mobileScreen) {
+      font-size: 1.15rem;
+      padding-left: .8rem;
+    }
+    @include multiple-media(tabletScreen, tabletScreenLandscape) {
+      font-size: 1.15rem;
+    }
+
+    @media (max-height: 601px) and (max-width: 900px) {
+      font-size: 1.15rem;
+    }
+
+    svg {
+      height: 2rem;
+      margin-right: 1.5rem;
+
+      @include breakpoint(mobileScreen) {
+        margin-right: .8rem;
+      }
+    }
+
+    .number {
+      display: none;
+      padding-left: .5rem;
+      white-space: pre;
+      color: #ffffff;
+      text-decoration: none;
+
+      @include breakpoint(tablet) {
+        display: inline;
+      }
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+
+      @include breakpoint(iPad) {
+        display: none;
+      }
+    }
+  }
+  #mobile-icon {
+    width: 2rem;
+    height: 3.1rem;
+    position: relative;
+    margin: 0 0 0 .8rem;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+
+    @media screen and (device-aspect-ratio: 2/3) {
+      width: 2.5rem;
+    }
+
+    @media screen and (device-aspect-ratio: 40/71) {
+      width: 2.5rem;
+    }
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+    and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71)
+    {
+      width: 3rem;
+    }
+
+    @media only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+      width: 3rem;
+    }
+
+    @include multiple-media(mobileScreenLandscape) {
+      width: 2rem;
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: .25s ease-in-out;
+      -moz-transition: .25s ease-in-out;
+      -o-transition: .25s ease-in-out;
+      transition: .25s ease-in-out;
+    }
+  }
+
+  #mobile-icon span:nth-child(1) {
+    top: 10px;
+  }
+
+  #mobile-icon span:nth-child(2),#mobile-icon span:nth-child(3) {
+    top: 18px;
+  }
+
+  #mobile-icon span:nth-child(4) {
+    top: 26px;
+  }
+
+  #mobile-icon.open span:nth-child(2) {
+    width: 0%;
+  }
+
+  #mobile-icon.open span:nth-child(1) {
+    top: 18px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    animation: moving .5s ;
+    animation-direction: alternate;
+
+    @keyframes moving {
+      0%{
+        transform: rotate(0);
+      }
+
+
+      100% {
+        -webkit-transform: rotate(-45deg);
+      }
+    }
+  }
+
+
+
+  #mobile-icon.open span:nth-child(3) {
+    width: 0%;
+    // left: 50%;
+  }
+
+  #mobile-icon.open span:nth-child(4) {
+    top: 18px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    animation: moving2 .5s ;
+    animation-direction: alternate;
+    @keyframes moving2 {
+      0%{
+        transform: rotate(0);
+      }
+
+      100% {
+        -webkit-transform: rotate(45deg);
+      }
+    }
+
+  }
+
+  &__mobile {
+    display: flex;
+    padding-right: 1.5rem;
+    margin-left: 1.5rem;
+
+    @include multiple-media(mobileScreen, mobileScreenLandscape) {
+      display: flex;
+      align-items: center;
+      padding-right: .8rem;
+      margin-left: .8rem;
+    }
+
+    @include breakpoint(tablet) {
+      display: none;
+    }
+
+    @include multiple-media(mobileScreenLandscape) {
+      display: flex !important;
+    }
+
+    span {
+      font-size: 2.5rem;
+      margin-right: 1.5rem;
+
+      @include breakpoint(mobileScreen) {
+        margin-right: 0;
+      }
+
+      a {
+        color: #fff;
+      }
+
+      i {
+        padding-bottom: 16px;
+        padding-top: 15px;
+        font-size: 2rem;
+      }
+    }
+    &-email {
+      width: 2rem;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity .2s linear;
+    }
+
+    .fadeOut {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s .2s, opacity .2s linear;
+    }
+
+    &__tabs {
+      display: none;
+
+      &.show-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: normal;
+        position: fixed;
+        width: 100vw;
+        background-color: #000000;
+        height: calc(100vh - 4rem);
+        color: white;
+        margin-top: 4rem;
+        padding-bottom: 1.5rem;
+        z-index: 100000;
+
+      }
+
+      &__nav {
+        list-style: none;
+        font-size: 2.2rem;
+        padding-left: 1.5rem;
+        margin-bottom: 0;
+
+        @include breakpoint(mobileScreen) {
+          padding-left: .8rem;
+        }
+
+        li {
+          font-family: "IntegralExtaBold";
+          letter-spacing: 1px;
+
+          a {
+            color: #000;
+            text-transform: uppercase;
+            text-decoration: none;
+            -webkit-text-fill-color: #000;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: #fff;
+
+            &:hover {
+              text-decoration: none;
+            }
+
+            &.active {
+              color: #000000;
+              -webkit-text-fill-color: #ffffff;
+              -webkit-text-stroke-width: 1px;
+              -webkit-text-stroke-color: #ffffff;
+              letter-spacing: 1.2px;
+            }
+          }
+        }
+      }
+
+      &--call {
+        color: #00FFB8;
+        text-transform: uppercase;
+        padding-left: 1.5rem;
+        font-size: 2.2rem;
+        font-weight: 600;
+        font-family: "IntegralExtaBold";
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+        text-decoration: none;
+
+        @include breakpoint(mobileScreen) {
+          margin-bottom: .8rem;
+          padding-left: .8rem;
+        }
+
+        &:hover {
+          color: #00FFB8;
+          text-decoration: none !important;
+        }
+        &:active {
+          color: #00FFB8;
+          text-decoration: none;
+        }
+      }
+    }
+
+  }
+
+  &-tabs {
+    display: none;
+    flex-direction: row-reverse;
+    font-size: 1.8rem;
+    width: 33%;
+    @include multiple-media(mobileScreen, mobileScreenLandscape) {
+      display: none !important;
+    }
+
+    @include breakpoint(tablet) {
+      display: flex;
+    }
+
+    @media (min-width: 600px) and (max-width: 899px) {
+      width: 50%;
+    }
+
+    @include multiple-media(tabletScreenLandscape) {
+      width: 40%;
+    }
+
+    .lois-navbar-nav {
+      list-style-type:none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+      padding: 0 .75rem;
+
+      @include breakpoint(desktop) {
+        padding: 0;
+        width: 100%;
+        padding-right: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__tabs {
+        padding: 0 .75rem;
+        font-size: 1rem;
+        font-family: "FoundersGroteskTextBold";
+
+        @include breakpoint(mobileScreen) {
+          font-size: 1.15rem;
+        }
+
+        @include multiple-media(tabletScreen) {
+          font-size: 1.15rem;
+          padding: 0 .75rem !important;
+        }
+
+        @media (max-height: 600px) and (max-width: 900px) {
+          font-size: 1.15rem;
+        }
+
+        @include breakpoint(desktop) {
+          padding: 0;
+        }
+
+        @include multiple-media(tabletScreenLandscape) {
+          font-size: 1.15rem;
+          padding: 0 .75rem !important;
+        }
+
+        a {
+          color: #ffffff;
+          cursor: pointer;
+          height: 5rem;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.uk-card {
+  display: block;
+
+  @media screen and (min-width: 601px) {
+    display: block;
+  }
+
+  &-document {
+    width: 2rem;
+
+    @include breakpoint(mobileScreen) {
+      display: none;
+    }
+
+    @media not all and (min-resolution:.001dpcm)
+    { @supports (-webkit-appearance:none) {
+
+      @include breakpoint(mobileScreen) {
+        width: 3.1rem;
+      }
+
+    }}
+
+  }
+
+}
+
+.uk-sticky-placeholder {
+  display: none;
+}
+
+.uk-card-default {
+  position: absolute ;
+  padding: 0;
+
+  right: 1.5rem;
+
+  @include breakpoint(mediumScreen) {
+    right: 8.5vw;
+  }
+  @include breakpoint(largeScreen) {
+    right: 8.5vw;
+  }
+}
+.uk-sticky-fixed {
+  width: auto !important;
+  right: 1.5rem;
+
+  @include breakpoint(mediumScreen) {
+    right: 8vw;
+  }
+  @include breakpoint(largeScreen) {
+    right: 8.2vw;
+  }
+}
+
+.lois-uk-card {
+  box-shadow: none;
+  right: calc(7vw + 1.5rem);
+
+  @include breakpoint(mobileScreen) {
+    right: .8rem;
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 1112px) {
+    right: 1.5rem !important;
+  }
+
+  //@include breakpoint(tabletScreenLandscape) {
+  //  right: 1.5rem;
+  //}
+}
+
+// Lois
+.lois {
+  padding: 4rem 0 3.6rem 0;
+
+  @include breakpoint(mobileScreen) {
+    padding-bottom: 2.5rem;
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 1024px) {
+    // padding-bottom: 6.6rem;
+  }
+
+  &-dots {
+    display: none;
+
+    @include multiple-media(mobileScreen, tabletScreen, tabletScreenLandscape) {
+      display: flex;
+      margin: .8rem 0 !important;
+    }
+
+    a {
+      background-color: #000;
+    }
+
+    .uk-active {
+
+      a {
+        background-color: #ffffff !important;
+        border-color: #000000 !important;
+      }
+    }
+
+    .uk-dotnav>*>* {
+      display: block;
+      box-sizing: border-box;
+      width: .6rem;
+      height: .6rem;
+      border-radius: 50%;
+      background: 0 0;
+      text-indent: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      border: 1px solid  #000;
+      transition: .2s ease-in-out;
+      transition-property: background-color,border-color;
+    }
+  }
+
+  .sticky-pdf {
+    padding: 1.5rem;
+    display: flex;
+    background-color: #00FFB8;
+    color: #000000;
+    cursor: pointer;
+    line-height: 1.2rem;
+
+    @include breakpoint(mobileScreen) {
+      padding: .8rem;
+    }
+
+    span {
+      border-left: 1px solid black;
+      margin-left: 1.5rem;
+      padding-left: 1.5rem;
+      font-family: "FoundersGroteskText";
+      font-size: 1rem;
+      line-height: 1.3;
+
+      @include breakpoint(mobileScreen) {
+        font-size: 1.15rem;
+        margin-left: 0;
+        padding-left: 0;
+        border: none;
+      }
+      @include multiple-media(tabletScreen, tabletScreenLandscape) {
+        font-size: 1.15rem;
+      }
+
+      @media (max-height: 600px) and (max-width: 900px) {
+        font-size: 1.15rem;
+      }
+    }
+  }
+
+  // Map
+  .location {
+    height: calc(100vh - 29rem);
+    min-height: 35rem;
+    position: relative;
+    margin: 1.5rem;
+
+    @include breakpoint(mobileScreen) {
+      margin: .8rem;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      min-height: 35rem;
+
+      .mapboxgl-popup-close-button {
+        display: none;
+      }
+
+      .mapboxgl-popup-content {
+        font-family: "CaveatRegular";
+        color: #000000;
+        font-size: 1rem;
+        text-transform: uppercase;
+        outline-color: #000000;
+      }
+    }
+
+    .slide-location {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 18rem;
+      z-index: 1000;
+      padding: 1.5rem;
+      display: none;
+      background-color: #ffffff;
+      height: calc(100% - 1.5rem);
+
+      @include breakpoint(iPadProLandscape) {
+        width: 16rem;
+      }
+
+      &-elements {
+
+        span {
+          display: block;
+          color: #000000;
+          font-size: 1rem;
+          cursor: pointer;
+          font-family: "FoundersGroteskText";
+
+          @include breakpoint(mobileScreen) {
+            font-size: 1.15rem;
+          }
+
+          @include multiple-media(tabletScreenLandscape) {
+            font-size: 1.15rem;
+          }
+
+          @media (max-height: 600px) and (max-width: 900px) {
+            font-size: 1.15rem;
+          }
+        }
+      }
+    }
+
+    .open {
+      display: block;
+
+      @include breakpoint(mobileScreen) {
+        display: none;
+      }
+    }
+  }
+  // End Map
+
+  // Header
+  &-header {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    align-items: flex-start;
+
+    @include breakpoint(mobileScreen) {
+      margin: .8rem 0;
+      padding: 0 .8rem;
+    }
+
+    &-logo {
+      width: 20rem;
+
+      @include multiple-media(mobileScreen, mobileScreenLandscape) {
+        width: 19rem;
+      }
+
+      @include breakpoint(tabletScreenLandscape) {
+        width: 22rem;
+      }
+    }
+
+    &__neigh {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: 20rem;
+
+      @include breakpoint(mobileScreen) {
+        margin-top: .8rem;
+      }
+
+
+      .white-title {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        text-align: right;
+        cursor: pointer;
+        color: #000000;
+        -webkit-text-fill-color: #ffffff; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000000;
+      }
+
+      .active {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        -webkit-text-fill-color: #000;
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h2 {
+        margin: 0;
+      }
+
+      &__item {
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+    }
+
+    &__features {
+      border-left: 1px solid #000;
+      padding-left: 1.5rem;
+      display: none;
+
+      @include breakpoint(tablet) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &--title {
+        color: #000000;
+        font-size: 1rem;
+        font-family: "FoundersGroteskTextBold";
+        margin-bottom: .75rem;
+        margin-top: 0;
+
+        @include breakpoint(mobileScreen) {
+          font-size: 1.15rem;
+          margin-bottom: .8rem;
+        }
+        @include multiple-media(tabletScreen, tabletScreenLandscape) {
+          font-size: 1.15rem;
+        }
+        @media (max-height: 600px) and (max-width: 900px) {
+          font-size: 1.15rem;
+        }
+
+      }
+
+      .lois-header-list {
+        list-style-type:none;
+        margin: 0;
+        padding-left: 0;
+
+        &--item {
+          color: #000000;
+          font-size: 1rem;
+          height: 1rem;
+          font-family: "FoundersGroteskText";
+
+
+          @include breakpoint(mobileScreen) {
+            font-size: 1rem;
+          }
+
+          @include breakpoint(tabletScreenLandscape) {
+            font-size: 1.15rem;
+          }
+
+        }
+      }
+    }
+  }
+  // End Header
+
+  // Building , Apartments
+  .building {
+    padding: 0 1.5rem;
+
+    @include breakpoint(mobileScreen) {
+      padding: 0 .8rem;
+    }
+
+    &-image {
+      display: block;
+      width: 100%;
+      min-height: 20rem;
+
+      @include breakpoint(tablet) {
+        display: none;
+      }
+
+      &--bg {
+        display: none;
+
+        @include breakpoint(tablet) {
+          display: block;
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+      }
+    }
+
+    &-first-description {
+      display: flex;
+      flex-direction: column;
+      min-height: 35rem;
+
+      @include breakpoint(tablet) {
+        flex-direction: row;
+        margin-top: 1.5rem;
+      }
+
+      @include breakpoint(desktop) {
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        width: 33%;
+        margin-left: 1.5rem;
+        overflow-y: auto;
+      }
+    }
+
+    .description-text {
+      @include breakpoint(mobileScreen) {
+        margin: .8rem 0;
+      }
+
+      @include breakpoint(tablet) {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      @include breakpoint(desktop) {
+        width: auto;
+      }
+
+      &--black {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        margin: 0;
+        color: #000000;
+        -webkit-text-fill-color: #000000;
+      }
+
+      &--white {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        color: #000000;
+        -webkit-text-fill-color: #ffffff;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000000;
+        margin: 0;
+      }
+
+      &--content {
+        margin: 1.5rem 1.5rem 0 0;
+        font-size: 1rem;
+        line-height: 1;
+        color: #000000;
+
+        @include breakpoint(mobileScreen) {
+          font-size: 1.15rem;
+          line-height: 1.2;
+          margin: .8rem 0 0 0;
+        }
+        @include multiple-media(tabletScreen, tabletScreenLandscape) {
+          font-size: 1.15rem;
+          line-height: 1.2;
+        }
+
+        @include breakpoint(tablet) {
+          margin-bottom: 0;
+        }
+
+        @include breakpoint(desktop) {
+          margin-right: 0;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+
+
+    &__first {
+      margin-top: 1.5rem;
+      min-height: 35rem;
+
+      @include breakpoint(mobileScreen) {
+        margin-top: .8rem;
+      }
+
+      @include breakpoint(desktop) {
+        display: flex;
+      }
+      @include multiple-media( tabletScreenLandscape) {
+        height: calc(100vh - 20rem);
+      }
+
+      @include multiple-media(mediaScreen, largeScreen) {
+        height: calc(100vh - 29.5rem);
+      }
+
+      &--bg {
+        height: calc(100vh - 40rem);
+        width: 67%;
+        background-size: cover;
+        background-position: 50%;
+
+        @include multiple-media(mobileScreen, mobileScreenLandscape) {
+          width: 100%;
+          min-height: 20rem;
+        }
+
+        @include multiple-media(mobileScreenLandscape) {
+          width: 100%;
+          min-height: 15rem;
+        }
+
+        @include breakpoint(iPad) {
+          height: calc(100vh - 49rem);
+          width: 100%;
+        }
+
+        @media only screen and (min-width: 600px) {
+          width: 100%;
+        }
+
+        @include breakpoint(desktop) {
+          height: auto;
+          width: 67%;
+        }
+
+      }
+
+      &-description--bg {
+        min-height: 20rem;
+        width: 50%;
+        background-size: cover;
+        background-position: 50%;
+
+        @include breakpoint(mobileScreen) {
+          width: 100%;
+        }
+
+        @include breakpoint(desktop) {
+          width: 100%;
+          height: 100%;
+          margin-top: auto;
+          max-height: 50%;
+        }
+
+        @include breakpoint(iPadLandscape) {
+          min-height: 10rem;
+        }
+
+        @include breakpoint(tabletScreenLandscape) {
+          min-height: 11rem;
+          max-height: 45%;
+        }
+      }
+
+    }
+
+    &-second {
+      min-height: 35rem;
+
+
+      @include breakpoint(tablet) {
+        margin-top: 1.5rem;
+      }
+
+      @include breakpoint(desktop) {
+        display: flex;
+        height: calc(100vh - 16rem);
+        margin-top: 1.5rem;
+      }
+
+      @include breakpoint(iPad) {
+        height: auto;
+      }
+
+      @include breakpoint(iPadLandscape) {
+        height: calc(100vh - 27rem);
+      }
+
+
+      @include breakpoint(iPadLandscape) {
+        height: calc(100vh - 16rem);
+      }
+
+      .building-description {
+
+
+        @include breakpoint(tablet) {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+
+        @include breakpoint(desktop) {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .description-text {
+          @include breakpoint(mobileScreen) {
+            margin-top: .8rem;
+          }
+
+          @include breakpoint(tabletScreen) {
+            margin-left: auto;
+            margin-top: 1.5rem;
+          }
+
+          @include breakpoint(desktop) {
+            width: 33%;
+            margin-right: 1.5rem;
+            margin-top: auto;
+          }
+
+        }
+      }
+
+      &-description--bg {
+        min-height: 20rem;
+        width: 100%;
+        background-size: cover;
+        background-position: 50%;
+
+        @include breakpoint(tablet) {
+          min-height: 40rem;
+        }
+
+
+
+        @include breakpoint(desktop) {
+          width: 67%;
+          height: 100%;
+          min-height: 20rem;
+        }
+      }
+    }
+  }
+  .neighborhood-apartments {
+
+    .building__first {
+      @include breakpoint(desktop) {
+        display: flex;
+        height: calc(100vh - 15.4rem);
+      }
+
+      @include breakpoint(iPadLandscape) {
+        height: calc(100vh - 16rem);
+      }
+    }
+  }
+
+  // Slider
+  .slider-box {
+    margin-top: 1.5rem;
+    height: 20rem;
+
+    @include breakpoint(mobileScreen) {
+      margin-top: .8rem;
+      margin-bottom: 12rem;
+    }
+    @include breakpoint(tablet) {
+      margin-bottom: 4rem;
+      height: calc(100vh - 13rem);
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 1024px) {
+      height: calc(100vh - 47rem);
+      min-height: 28rem;
+    }
+
+    @include breakpoint(tabletScreenLandscape) {
+      height: calc(100vh - 13rem);
+      min-height: 31rem;
+    }
+
+    @include breakpoint(iPadLandscape) {
+      height: calc(100vh - 13rem);
+    }
+
+    .uk-position-center-right,
+    .uk-position-center-left {
+      top: 88% !important;
+
+      @include breakpoint(tablet) {
+        top: 97% !important;
+      }
+
+      @include multiple-media(mobileScreen, tabletScreen, tabletScreenLandscape, iPad, iPadLandscape, iPadProPortrait, iPadProLandscape) {
+        top: 100% !important;
+      }
+    }
+
+    .uk-position-relative {
+      height: 100%;
+
+      @include breakpoint(mobileScreen) {
+        right: 0;
+      }
+
+      @include breakpoint(tablet) {
+        height: calc(100vh - 17rem);
+      }
+
+      @media screen and (min-width: 601px) and (max-width: 1024px) {
+        height: calc(100vh - 51rem);
+        min-height: 27rem;
+      }
+
+      @media screen and (min-width: 1024px) and (max-width: 768px) {
+        height: calc(100vh - 28rem);
+      }
+      @include multiple-media(tabletScreenLandscape) {
+        height: calc(100vh - 17rem);
+      }
+
+      @include multiple-media(largeScreen) {
+        height: calc(100vh - 16rem);
+      }
+
+      @include breakpoint(iPadLandscape) {
+        height: calc(100vh - 17rem);
+      }
+
+      .uk-slideshow-items {
+        min-height: 100% !important;
+        height: 100%;
+
+        @include multiple-media(tabletScreenLandscape) {
+          min-height: 32rem !important;
+        }
+      }
+    }
+    .uk-slidenav {
+      right: .5rem;
+      margin-right: 0;
+      color: #ffffff;
+    }
+
+    .next-text {
+      margin-right: 1.5rem;
+
+      @include breakpoint(mobileScreen) {
+        margin-right: .8rem;
+      }
+    }
+
+    .uk-position-center-right {
+      text-decoration: none;
+    }
+    .uk-slidenav {
+      @include multiple-media(mobileScreen, tabletScreen, tabletScreenLandscape, iPadProPortrait, iPadProLandscape) {
+        right: 0;
+        margin: 0;
+      }
+    }
+    .uk-slidenav:hover {
+      color: #ffffff;
+    }
+
+    @include multiple-media(mobileScreen, tabletScreen, tabletScreenLandscape, iPadProPortrait, iPadProLandscape) {
+      .uk-position-small {
+
+        .next-text {
+          margin-right: 0;
+          margin-left: 0;
+        }
+
+        svg {
+          @include multiple-media(mobileScreen, tabletScreen, tabletScreenLandscape, iPadProPortrait, iPadProLandscape) {
+            display: none;
+          }
+        }
+
+
+      }
+    }
+
+
+  }
+  //End Slider
+
+  // Lottery - page
+  .lottery{
+
+    &-first {
+      height: calc(100vh - 19rem);
+      display: flex;
+
+      @include breakpoint(mobileScreen) {
+        height: 100vh;
+        min-height: calc(100vh - 15rem);
+      }
+
+      @include breakpoint(mobileScreenLandscape) {
+        height: 100%;
+      }
+
+
+      &-wrapper {
+        margin: auto 1.5rem;
+        width: 100%;
+        font-family: "FoundersGroteskText";
+
+        @include breakpoint(mobileScreen) {
+          margin: auto .8rem;
+        }
+
+        @include breakpoint(tablet) {
+          width: 80%;
+          margin: auto;
+        }
+        @media (min-width: 1025px) {
+          width: 50%;
+          margin: auto;
+        }
+
+        @include multiple-media(tabletScreenLandscape) {
+          font-size: 1.15rem;
+          width: 65%;
+        }
+        @media (max-height: 600px) and (max-width: 900px) {
+          font-size: 1.15rem;
+        }
+
+        &-title {
+          text-align: center;
+
+          &-black {
+            font-family: "IntegralExtaBold";
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin: 0;
+            color: #000000;
+            text-align: center;
+            -webkit-text-fill-color: #000000;
+          }
+
+          &-white {
+            font-family: "IntegralExtaBold";
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin: 0;
+            text-align: center;
+            color: #000000;
+            -webkit-text-fill-color: #ffffff;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: #000000;
+          }
+        }
+
+        &-text {
+          color: #000000;
+          text-align: center;
+          padding: 0 1.5rem;
+          font-size: 1rem;
+          word-break: break-all;
+
+          @include breakpoint(mobileScreen) {
+            font-size: 1.15rem;
+            padding: 0;
+            margin-top: .8rem;
+          }
+
+          @include multiple-media(tabletScreen, tabletScreenLandscape) {
+            font-size: 1.15rem;
+          }
+        }
+
+        &-button {
+          cursor: pointer;
+          display: block;
+          margin: 0 auto;
+          color: #ffffff;
+          font-size: 1.15rem;
+          padding: 1.5rem 3rem;
+          background-color: #000000;
+          font-family: "FoundersGroteskTextBold";
+          outline: 0;
+          border: 1px solid #000000;
+
+          @include breakpoint(mobileScreen) {
+            font-size: 1.15rem;
+          }
+        }
+
+        &-ending {
+
+          &--black {
+            font-family: "IntegralExtaBold";
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin: 0;
+            color: #000000;
+            text-align: center;
+            -webkit-text-fill-color: #000000;
+          }
+
+          .lottery-ending {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+
+            @include breakpoint(mobileScreen) {
+              margin-bottom: .8rem;
+            }
+
+            .lottery-ending__time__value {
+              display: flex;
+              flex-direction: column;
+
+              &--text {
+                text-align: center;
+                color: #000000;
+                font-size: 1rem;
+              }
+            }
+
+            .lottery-open__title--white {
+              font-family: "IntegralExtaBold";
+              font-size: 2.2rem;
+              text-transform: uppercase;
+              margin: 0;
+              letter-spacing: 1px;
+              cursor: pointer;
+              color: #000000;
+              -webkit-text-fill-color: #ffffff;
+              -webkit-text-stroke-width: 1px;
+              -webkit-text-stroke-color: #000000;
+              text-align: center;
+            }
+
+            .uk-divider-vertical {
+              width: 1px;
+              height: 1.5rem;
+              margin: .5rem;
+              border-right: 1px solid #000;
+              border-left: none;
+              padding-left: 0;
+              padding-right: 0;
+
+              @include breakpoint(tabletScreen) {
+                height: 1.5rem;
+                margin-top: .5rem;
+              }
+            }
+
+          }
+        }
+      }
+    }
+
+    &-second {
+
+
+      &-head {
+        margin: 3rem 1.5rem 1.5rem 1.5rem;
+
+        @include breakpoint(mobileScreen) {
+          margin: .8rem .8rem .8rem .8rem;
+        }
+
+        &--black {
+          font-family: "IntegralExtaBold";
+          font-size: 2.2rem;
+          text-transform: uppercase;
+          margin: 0;
+          color: #000000;
+          -webkit-text-fill-color: #000000;
+        }
+
+        &--white {
+          font-family: "IntegralExtaBold";
+          font-size: 2.2rem;
+          text-transform: uppercase;
+          color: #000000;
+          -webkit-text-fill-color: #ffffff;
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: #000000;
+          margin: 0;
+        }
+      }
+      //Lottery table
+      .lottery-table {
+        $table-header: #000000;
+        $table-header-border: #000000;
+        $table-border: #000000;
+        $row-bg: #f4f2f1;
+
+        background-color: #E0E0E0;
+        margin-top: 1.5rem;
+        padding-bottom: 1.5rem;
+
+        @include breakpoint(mobileScreen) {
+          background-color: #ffffff;
+          margin: .8rem .8rem 0 .8rem;
+          padding-bottom: .8rem;
+        }
+
+        div {
+          box-sizing: border-box;
+          color: #000000;
+        }
+
+        .table-container {
+          display: block;
+          margin-left: auto;
+          width: 100%;
+
+
+          @include breakpoint(tablet) {
+            padding: 1.5rem;
+          }
+
+          @media screen and (min-width:1366px) and (max-width: 1440px) {
+            width: 64%;
+          }
+
+          @media screen and (min-width:1441px) and (max-width: 1779px) {
+            width: 61%;
+          }
+
+          @include breakpoint(largeScreen) {
+            width: 59%;
+          }
+
+          @media screen and (min-width:1920px) {
+            width: 63%;
+          }
+        }
+
+        .flag-icon {
+          margin-right: 0.1em;
+          width: 100%;
+        }
+
+        .flex-table {
+          display: flex;
+          flex-flow: row wrap;
+          transition: 0.5s;
+
+          &.custom-color {
+            background-color: #00FFB8;
+          }
+          &.spec-row {
+            border-bottom: 1px solid #000000;
+
+            .flex-row {
+              border-bottom: none;
+            }
+          }
+          .first-fix {
+            border-bottom: 1px solid #000 !important;
+          }
+        }
+
+        .header {
+
+          .flex-row {
+            font-family: "FoundersGroteskTextBold";
+            line-height: 1.2;
+          }
+        }
+
+        .flex-row {
+          width: calc(100% / 5);
+          text-align: left;
+          padding: 1.5rem;
+          border-bottom: solid 1px $table-border;
+          font-size: 1rem;
+
+          @include breakpoint(mobileScreen) {
+            width: calc(100% / 6) !important;
+            padding: 1.5rem .2rem;
+            text-align: left;
+            font-size: 1rem;
+          }
+          @include multiple-media(tabletScreen, tabletScreenLandscape) {
+            font-size: 1.15rem;
+            text-align: left;
+          }
+        }
+
+        .mobile-width-3 {
+          text-align: right;
+          @include breakpoint(mobileScreen) {
+            width: calc(100% / 3.2) !important;
+            text-align: right;
+          }
+        }
+        .mobile-width-5-5 {
+          @include breakpoint(mobileScreen) {
+            width: calc(100% / 5.5) !important;
+            text-align: left;
+          }
+        }
+        .mobile-width-6 {
+          @include breakpoint(mobileScreen) {
+            width: calc(100% / 6) !important;
+          }
+        }
+        .mobile-width-2 {
+          @include breakpoint(mobileScreen) {
+            width: calc(100% / 2.063) !important;
+          }
+        }
+        .mobile-width-1 {
+          @include breakpoint(mobileScreen) {
+            width: 100% !important;
+          }
+        }
+        .mobile-width-1-5 {
+          @include breakpoint(mobileScreen) {
+            width: calc(100% / 1.5) !important;
+          }
+        }
+        .mobile-width-cell-36 {
+          @include breakpoint(mobileScreen) {
+            width: 36% !important;
+          }
+        }
+        .mobile-width-cell-64 {
+          text-align: right !important;
+          @include breakpoint(mobileScreen) {
+            width: 62% !important;
+            text-align: right !important;
+          }
+        }
+
+        .table-border-none {
+          border-bottom: none;
+        }
+
+        .rowspan {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: flex-start;
+          justify-content: center;
+          align-self: flex-start;
+
+          @include breakpoint(mobileScreen) {
+            min-height: 49px;
+          }
+        }
+
+        .column {
+          display: flex;
+          flex-flow: column wrap;
+          width: 40%;
+          padding: 0;
+          .flex-row {
+            display: flex;
+            flex-flow: row wrap;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            border-bottom: solid 1px $table-border;
+          }
+        }
+
+        .flex-cell {
+          width: calc(100% / 2); //1px = border right
+          padding: 1.5rem;
+          text-align: left;
+          &:last-child {
+            // border-right: 0;
+          }
+
+          @include multiple-media(mobileScreen) {
+            padding: 1.5rem .2rem;
+            text-align: left;
+          }
+
+          @include multiple-media(tabletScreen) {
+            text-align: left;
+          }
+        }
+
+        &-mark {
+          display: flex;
+          width: 100%;
+          margin: 3rem 1.5rem 1.5rem auto;
+
+          @include breakpoint(mobileScreen) {
+            margin: 0;
+          }
+
+
+          @include breakpoint(tablet) {
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+          }
+
+          @media screen and (min-width:1366px) and (max-width: 1440px) {
+            width: 64%;
+          }
+
+          @media screen and (min-width:1441px) and (max-width: 1779px) {
+            width: 59%;
+            padding-right: 3rem;
+          }
+
+          @include breakpoint(largeScreen) {
+            width: 59%;
+            padding-left: 3rem;
+          }
+
+          @media screen and (min-width:1920px) {
+            width: 62%;
+          }
+
+          ol {
+            font-size: .8rem;
+            padding: 0;
+            margin: 0;
+
+            @include breakpoint(mobileScreen) {
+              line-height: 1.2;
+              padding: 0 0 0 0.8rem;
+              margin: .8rem;
+            }
+          }
+
+        }
+
+
+      }
+      // Lottery rent smart
+      .rent-smart {
+        background-color: #00FFB8;
+        text-align: center;
+        padding: 4rem 1.5rem;
+
+        @include breakpoint(mobileScreen) {
+          padding: 4rem .8rem;
+        }
+
+        &-content {
+          width: 100%;
+          margin: 0 auto;
+
+          @include breakpoint(tablet) {
+            width: 50%
+          }
+
+          @include breakpoint(mobileScreenLandscape) {
+            width: 100%;
+          }
+
+          &--image {
+            width: 15rem;
+            margin: 0 auto 1.5rem auto;
+
+            @include breakpoint(mobileScreen) {
+              margin: 0 auto .8rem auto;
+            }
+          }
+        }
+
+        &-black {
+          font-size: 2.2rem;
+          font-weight: 600;
+          text-transform: lowercase;
+          line-height: 1;
+          color: #000000;
+          -webkit-text-fill-color: #000000;
+          font-family: "FoundersGroteskText";
+        }
+
+        &-white {
+          font-size: 2.2rem;
+          text-transform: lowercase;
+          color: #000000;
+          -webkit-text-fill-color: #00FFB8;
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: #000000;
+          line-height: 1;
+          font-family: "FoundersGroteskText";
+        }
+
+        &-text {
+          margin: 1.5rem 0 0 0;
+          color: #000000;
+          font-size: 1.15rem;
+
+          @include breakpoint(mobileScreen) {
+            margin-top: .8rem;
+          }
+          @include breakpoint(tablet) {
+            margin: 0;
+          }
+          @include breakpoint(largeScreen) {
+            margin: 1.5rem 0 0 0;
+          }
+        }
+      }
+      // end Lottery rent smart
+
+
+    }
+    &-third {
+
+      // Lottery apartments
+      .lottery-apartments {
+        margin: 1.5rem .75rem 0 .75rem;
+
+        @include breakpoint(mobileScreen) {
+          margin: .8rem .8rem 0 .8rem;
+        }
+
+        &-wrapper {
+          display: flex;
+          flex-direction: column;
+
+          @include breakpoint(tablet) {
+            flex-direction: row;
+          }
+
+          .lottery-apartment {
+            flex: 1;
+            margin: 0 .75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 22rem;
+
+            @include breakpoint(mobileScreen) {
+              margin: 0;
+            }
+
+            &-head {
+
+              &--black {
+                font-family: "IntegralExtaBold";
+                font-size: 2.2rem;
+                text-transform: uppercase;
+                margin: 0;
+                color: #000000;
+                -webkit-text-fill-color: #000000;
+              }
+
+              &--white {
+                font-family: "IntegralExtaBold";
+                font-size: 2.2rem;
+                text-transform: uppercase;
+                color: #000000;
+                -webkit-text-fill-color: #ffffff;
+                -webkit-text-stroke-width: 1px;
+                -webkit-text-stroke-color: #000000;
+                margin: 0;
+              }
+            }
+
+            &-image {
+              margin: 1.5rem 0;
+
+              @include breakpoint(mobileScreen) {
+                margin: .8rem 0;
+              }
+              .building__first--bg {
+                width: 100%;
+
+                @include breakpoint(tablet) {
+                  height: 15rem;
+                }
+
+                @include breakpoint(desktop) {
+                  height: 25rem;
+                }
+              }
+            }
+          }
+        }
+      }
+      // end Lottery apartments
+    }
+
+    &-fourth {
+      margin: 0 1.5rem;
+
+      @include breakpoint(mobileScreen) {
+        margin: 0 .8rem;
+      }
+
+      .lottery-faq {
+
+        &-head {
+          margin-bottom: 1.5rem;
+
+          @include breakpoint(mobileScreen) {
+            margin: 0 0 .8rem 0;
+          }
+
+          &--black {
+            font-family: "IntegralExtaBold";
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin: 0;
+            color: #000000;
+            -webkit-text-fill-color: #000000;
+          }
+
+          &--white {
+            font-family: "IntegralExtaBold";
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            color: #000000;
+            -webkit-text-fill-color: #ffffff;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: #000000;
+            margin: 0;
+          }
+        }
+
+        &-block {
+
+          &--title {
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font-size: 1rem;
+            color: #000;
+            margin-bottom: 0.8rem;
+            font-family: "FoundersGroteskTextBold";
+            letter-spacing: normal;
+
+            @include breakpoint(mobileScreen) {
+              font-size: 1.15rem;
+            }
+            @include multiple-media(tabletScreen, tabletScreenLandscape) {
+              font-size: 1.15rem;
+            }
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          &--content {
+            display: none;
+            font-size: 1rem;
+            color: #000;
+            margin: 1.5rem 0;
+
+            @include breakpoint(mobileScreen) {
+              margin: .8rem 0;
+              font-size: 1.15rem;
+            }
+            @include multiple-media(tabletScreen, tabletScreenLandscape) {
+              font-size: 1.15rem;
+            }
+          }
+
+        }
+      }
+    }
+  }
+  // End Lottery page
+
+
+}
+
+.neighborhood-header {
+
+
+  @include breakpoint(mobileScreen) {
+    flex-direction: column;
+
+    .lois-header__neigh {
+      width: 100%;
+    }
+  }
+}
+
+// Lottery layer
+.lottery-layer {
+  display: flex;
+  flex-direction: row;
+  background-color: #00FFB8;
+  justify-content: space-between;
+  margin-top: auto;
+  width: 100%;
+  padding: 1.5rem 0;
+  align-items: flex-start;
+  position:fixed;
+  bottom:0;
+  z-index:1000; //Just in case :)
+
+  @include multiple-media(mobileScreen, mobileScreenLandscape) {
+    padding: .8rem 0 1.2rem 0;
+    display: block;
+  }
+
+
+  @include breakpoint(tabletScreenLandscape) {
+    top: unset;
+    left: unset;
+    transform: unset;
+    width: 100%;
+    height: unset;
+    display: flex;
+  }
+
+  @include breakpoint(tabletScreenLandscape) {
+    display: flex;
+  }
+
+  @include breakpoint(bigDesktop) {
+    width: 86vw;
+  }
+
+  .lottery-open {
+
+    @include breakpoint(tablet) {
+      margin-left: 1.5rem;
+    }
+
+    @include multiple-media(mobileScreen, mobileScreenLandscape) {
+      padding: 0 .8rem;
+    }
+
+    @include multiple-media(mobileScreenLandscape) {
+      align-items: center;
+      display: flex;
+    }
+
+    &__title {
+
+      &--black {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        margin: 0;
+        letter-spacing: 1px;
+        color: #000000;
+        -webkit-text-fill-color: #000000;
+      }
+      &--white {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        margin: 0;
+        cursor: pointer;
+        letter-spacing: 1px;
+        color: #000000;
+        -webkit-text-fill-color: #00FFB8;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000000;
+        &:hover {
+          -webkit-text-fill-color: #000000;
+          -webkit-text-stroke-width: 0;
+        }
+      }
+    }
+
+    h1 {
+      margin: 0;
+
+      @include multiple-media(mobileScreen, mobileScreenLandscape) {
+        //font-size: 2.4rem;
+        text-align: center;
+      }
+    }
+
+    .click-here {
+      @include multiple-media(mobileScreen, mobileScreenLandscape) {
+        display: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .learn-more {
+      display: none;
+      -webkit-text-fill-color: #00FFB8;
+      @include multiple-media(mobileScreen, mobileScreenLandscape) {
+        display: block;
+        -webkit-text-fill-color: #00FFB8;
+
+        &:hover {
+          -webkit-text-fill-color: #00FFB8;
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: #000000;
+        }
+      }
+    }
+
+  }
+
+  .lottery-ending {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @include multiple-media(mobileScreen, mobileScreenLandscape) {
+      text-align: center;
+      display: none;
+    }
+
+    @include breakpoint(tablet) {
+      margin-right: 1.5rem;
+    }
+
+    h1 {
+      margin: 0;
+
+      @include multiple-media(mobileScreen, mobileScreenLandscape) {
+        //font-size: 2.4rem;
+        text-align: center;
+      }
+    }
+    .lottery-open__title--white {
+      cursor: default;
+
+      &:hover {
+        -webkit-text-fill-color: #00FFB8;
+        -webkit-text-stroke-width: 1px;
+      }
+    }
+
+    &__time {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      @include multiple-media(mobileScreen, mobileScreenLandscape) {
+        text-align: center;
+        display: inline-flex;
+        justify-content: center;
+      }
+
+      &__value {
+        display: flex;
+        flex-direction: column;
+        padding-left: .75rem;
+        align-items: flex-end;
+
+
+        &--text {
+          font-size: 1rem;
+          color: #000000;
+
+          @include multiple-media(mobileScreen, mobileScreenLandscape) {
+            font-size: 1.15rem;
+          }
+          @include multiple-media(tabletScreen, tabletScreenLandscape) {
+            font-size: 1.15rem;
+          }
+        }
+      }
+
+      .uk-divider-vertical {
+        width: 1px;
+        height: 1.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        border-right: 1px solid #000;
+        border-left: none;
+        margin-top: .5rem;
+        padding-left: 0.75rem;
+        padding-right: 0;
+      }
+
+      &__text {
+
+        span {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+// Lottery layer end
+
+// Single Apartment
+.single-apartment {
+  display: none;
+  height: calc(100vh - 14rem);
+  position: absolute;
+  top: 7rem;
+  left: 0;
+  z-index: 100;
+  margin: 1.5rem;
+  background-color: #ffffff;
+
+  @include breakpoint(mobileScreen) {
+    margin: .8rem;
+  }
+
+  &.show-apartment {
+    display: block;
+    transition: all .5s ease;
+  }
+
+  .building__first {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    @include multiple-media(tabletScreen) {
+      flex-direction: column;
+    }
+
+    .uk-active {
+
+      img {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+
+    .uk-position-relative {
+
+      @include multiple-media(tabletScreen) {
+        width: 100%;
+        height: 100%;
+        min-height: 40rem;
+      }
+    }
+
+    .building-first-description {
+
+      @include multiple-media(tabletScreen) {
+        margin: 1.5rem 0 0 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .building-image {
+    width: 65%
+  }
+
+  .uk-position-relative {
+    width: 67%;
+
+    @include multiple-media(tabletScreenLandscape) {
+      width: 63%;
+    }
+
+    .uk-slideshow-items {
+      height: 100%;
+    }
+  }
+
+  .building-first-description {
+    margin-left: 1.5rem;
+    overflow-y: auto;
+    width: 33%;
+
+    @include breakpoint(mobileScreen) {
+      margin: .8rem;
+    }
+
+    @include multiple-media(tabletScreenLandscape) {
+      width: 37%;
+    }
+  }
+
+  .description-text {
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    i {
+      right: 0;
+      position: absolute;
+      font-size: 2rem;
+      color: #cccccc;
+      cursor: pointer;
+    }
+
+    &-close {
+      position: absolute;
+      right: 0;
+      width: 1.5rem;
+    }
+  }
+
+  .description-text--black {
+    font-family: "IntegralExtaBold";
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin: 0;
+    color: #000000;
+    -webkit-text-fill-color: #000000;
+  }
+
+  .description-text--white {
+    font-family: "IntegralExtaBold";
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin: 0;
+    color: #000000;
+    -webkit-text-fill-color: #ffffff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000000;
+  }
+
+  .description-text--content {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+
+    @include breakpoint(mobileScreen) {
+      font-size: 1.15rem;
+      margin: .8rem 0;
+    }
+    @include multiple-media(tabletScreen, tabletScreenLandscape) {
+      font-size: 1.15rem;
+    }
+  }
+
+  .highlights {
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .close {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+  }
+  .close:hover {
+    opacity: 1;
+  }
+  .close:before, .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+  }
+  .close:before {
+    transform: rotate(45deg);
+  }
+  .close:after {
+    transform: rotate(-45deg);
+  }
+}
+// end Single Apartment
+
+// Action Layer
+.action-layer {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  justify-content: space-between;
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  padding: 0;
+  top: unset;
+
+  @include breakpoint(mobileScreen) {
+
+  }
+
+
+  &-view {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    border-bottom: 1px solid #000;
+    background-color: #00FFB8;
+
+    @include breakpoint(mobileScreen) {
+      flex-direction: column;
+      padding-top: .8rem;
+      padding-bottom: .8rem;
+    }
+
+    .lottery-open__title--black {
+
+      @include multiple-media(mobileScreen, mobileScreenLandscape) {
+        display: none !important;
+      }
+    }
+  }
+
+  &.expand {
+    top: 4rem;
+    // background-color: #ffffff;
+
+    .apartments-search {
+      margin-right: 0;
+
+      @include multiple-media(mobileScreen) {
+        margin: .8rem 0 0 0;
+      }
+
+      @include multiple-media(largeScreen) {
+        width: 32.4%;
+      }
+    }
+
+    .slide-in {
+      margin-bottom: 1.5rem;
+
+      @include multiple-media(mobileScreen) {
+        margin-bottom: .8rem;
+      }
+
+      &-cart {
+
+        &__content {
+          @include multiple-media(mobileScreen) {
+            padding-top: .8rem;
+          }
+        }
+      }
+    }
+
+    .action-layer-view {
+      background-color: #ffffff;
+      width: -webkit-fill-available;
+      margin: 0 1.5rem;
+
+      @include multiple-media(mobileScreen) {
+        margin: 0 .8rem;
+      }
+
+      .lottery-open {
+
+        h1 {
+          display: none;
+        }
+      }
+
+      .apartments-search-select {
+
+        @include multiple-media(tabletScreen) {
+          padding-left: .8rem;
+          padding-right: 0;
+        }
+
+        @include multiple-media(largeScreen) {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  .expand-single-apartment {
+    height: calc(100vh - 16.3rem);
+    position: absolute;
+    top: 9.3rem;
+    left: 0;
+    z-index: 100;
+    display: block;
+    background-color: #ffffff;
+  }
+}
+// Action Layer end
+
+// Apartments header section (slide in & slide single)
+.apartments-toggle {
+  position: absolute;
+  cursor: pointer;
+  display: none;
+
+  @include breakpoint(mobileScreen) {
+    margin-left: 0;
+    position: relative;
+    width: fit-content;
+    width: -moz-fit-content;
+  }
+
+  i {
+    font-size: 3.5rem;
+  }
+
+  img {
+
+    @include multiple-media(largeScreen) {
+      width: 2.5rem;
+    }
+  }
+}
+.apartments-search {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 0 1.5rem 0 0;
+  min-height: 1rem;
+
+  @include breakpoint(mobileScreen) {
+    font-size: 1.15rem;
+    margin: .8rem .8rem 0 .8rem;
+  }
+
+  @include multiple-media(tabletScreen, tabletScreenLandscape) {
+    font-size: 1.15rem;
+  }
+
+  @include multiple-media(mobileScreenLandscape) {
+    width: auto ;
+  }
+
+  @include multiple-media(largeScreen) {
+    width: 33%;
+    margin: 0;
+  }
+
+  &-select {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+
+    @include multiple-media(tabletScreen) {
+      padding:  0;
+    }
+
+    @include multiple-media(largeScreen) {
+      padding-right: 1.5rem;
+    }
+
+    &__section {
+      display: flex;
+      flex-direction: column;
+      margin: 0 .8rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @include breakpoint(mobileScreen) {
+        margin: 0;
+      }
+
+      @include multiple-media(mobileScreenLandscape) {
+        margin: 0 .8rem;
+      }
+
+      @include multiple-media(largeScreen) {
+        margin: 0;
+      }
+
+      .uk-button-default {
+        border: none;
+        border-bottom: 1px solid #000000;
+        line-height: 2.5rem;
+        font-size: 1rem;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        text-transform: unset;
+        color: #000;
+        height: 2rem;
+
+        @include breakpoint(mobileScreen) {
+          font-size: 1.15rem;
+          height: 4rem;
+        }
+        @include multiple-media(tabletScreen, tabletScreenLandscape) {
+          font-size: 1.15rem;
+        }
+
+        @include multiple-media(tabletScreen, smallScreen, mediumScreen, largeScreen) {
+          height: 3rem;
+        }
+      }
+
+      .uk-dropdown {
+        min-width: 10rem;
+        padding: 1.5rem;
+        margin-top: 0;
+
+        a {
+          font-size: 1.4rem;
+        }
+      }
+
+      &--value {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        margin: 0;
+        text-align: center;
+        color: #000000;
+        -webkit-text-fill-color: #ffffff;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000000;
+      }
+    }
+  }
+}
+// Apartments header section end
+
+// Slide in page
+.slide-in {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 0 .75rem;
+  height: 100%;
+  width: -webkit-fill-available;
+  overflow-y: auto;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    // margin-bottom: 5rem;
+  }
+
+  &-cart {
+    margin-top: 1.5rem;
+
+
+    @include breakpoint(mobileScreen) {
+      margin-top: .8rem;
+      flex-basis: 100%;
+      width: 100%;
+    }
+
+    @include breakpoint(tabletScreen) {
+      width: 50%;
+      flex-basis: 50%;
+    }
+
+    @include multiple-media(tabletScreenLandscape) {
+      width: 33%;
+      flex-basis: 33%;
+    }
+
+    @include multiple-media(smallScreen) {
+      width: 33%;
+      flex-basis: 33.33%;
+    }
+
+    @include multiple-media(mediumScreen, largeScreen) {
+      width: 25%;
+      flex-basis: 25%;
+    }
+
+    &-container {
+      padding: 0 .75rem;
+
+      @include multiple-media(mobileScreen) {
+        padding: 0;
+      }
+
+      .slide-in-cart__slider {
+
+        .uk-position-relative {
+          height: 20rem;
+
+          .uk-slideshow-items {
+            height: 100%;
+
+            .uk-cover {
+              width: 100%;
+            }
+          }
+        }
+
+        .lois-dots {
+          margin-bottom: 0 !important;
+        }
+      }
+    }
+
+    &__image {
+
+      .building {
+        padding: 0 1.5rem;
+
+        &-image {
+          display: block;
+          width: 100%;
+
+          @include breakpoint(tablet) {
+            display: none;
+          }
+
+          &--bg {
+            min-height: 20rem;
+            width: 100%;
+
+            @include multiple-media(mobileScreen) {
+              background-size: cover;
+              background-position: 50%;
+            }
+
+            @include breakpoint(tablet) {
+              display: block;
+              background-repeat: no-repeat;
+              background-size: 100%;
+            }
+          }
+        }
+      }
+
+      .building-second-description--bg {
+
+        @include breakpoint(tablet) {
+          height: 20rem;
+          max-height: 20rem;
+          min-height: unset;
+        }
+
+        @include breakpoint(desktop) {
+          height: 15rem;
+        }
+
+      }
+    }
+
+    &__content {
+
+      &--black {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        margin: 0;
+        color: #000000;
+        -webkit-text-fill-color: #000000;
+      }
+
+      &--white {
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        margin: 0;
+        color: #000000;
+        -webkit-text-fill-color: #ffffff;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000000;
+      }
+
+      &--link {
+        margin-top: 1.5rem;
+        display: block;
+        color: #000;
+        font-size: 1.2rem;
+        text-decoration: none;
+
+        &:active {
+          color: inherit;
+          text-decoration: none;
+        }
+        &:hover {
+          color: #000000;
+          text-decoration: none;
+        }
+
+        @include breakpoint(mobileScreen) {
+          margin: .8rem 0 0 0;
+        }
+      }
+
+      &-mobile {
+
+        &-info {
+
+        }
+      }
+    }
+
+    &__slider {
+
+    }
+  }
+}
+
+.slide-out {
+  display: none;
+}
+// End Slide in page
+
+// Contact modal
+.modal-contact {
+  width: 25rem !important;
+  background-color: #00FFB8;
+  padding: 1.5rem;
+
+  @include breakpoint(mobileScreen) {
+    padding: .8rem;
+  }
+
+  .uk-close {
+    display: none;
+  }
+
+  &__titles {
+
+    &--dark {
+      font-family: "IntegralExtaBold";
+      font-size: 2.2rem;
+      color: #000;
+      text-transform: uppercase;
+      margin: 0;
+      -webkit-text-fill-color: #000000;
+    }
+
+    &--light {
+      font-family: "IntegralExtaBold";
+      font-size: 2.2rem;
+      color: #000000;
+      text-transform: uppercase;
+      margin: 0;
+      -webkit-text-fill-color: #00FFB8;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: #000000;
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+
+    &__section {
+      display: flex;
+      flex-direction: column;
+
+      &--label {
+
+      }
+
+      &--input {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        margin-top: 1.5rem;
+        font-size: 1rem;
+        width: 100%;
+        color: #000000;
+        font-family: "FoundersGroteskText";
+
+        @include breakpoint(mobileScreen) {
+          font-size: 1.15rem;
+          margin-top: 1.5rem;
+        }
+        @include multiple-media(tabletScreen, tabletScreenLandscape) {
+          font-size: 1.15rem;
+        }
+
+        &::selection{
+          background-color: transparent;
+        }
+
+        &::placeholder {
+          color: #000000;
+          font-family: "FoundersGroteskText";
+        }
+
+        &::-moz-selection{
+          background-color: transparent;
+        }
+
+        &:focus {
+          outline:0;
+        }
+      }
+    }
+
+    &--submit {
+      width: 20%;
+      min-width: 100px;
+      padding: 1rem 0;
+      font-size: 1rem;
+      background-color: #000000;
+      color: #ffffff;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      cursor: pointer;
+      font-family: "FoundersGroteskText";
+
+      @include breakpoint(mobileScreen) {
+        font-size: 1.15rem;
+        margin: 2.5rem 0 .8rem 0;
+      }
+      @include multiple-media(tabletScreen, tabletScreenLandscape) {
+        font-size: 1.15rem;
+      }
+    }
+  }
+
+  &-info {
+    &--message {
+      font-size: .8rem;
+      color: #000000;
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
+  }
+}
+// End Contact modal
+
+// Layout modal
+.layout {
+  padding: 0;
+  z-index: 10000000000;
+
+  &-close {
+    right: 0;
+    position: absolute;
+    margin-right: 1.5rem;
+    margin-top: 1rem;
+    color: #000;
+    cursor: pointer;
+
+    @include breakpoint(mobileScreen) {
+      margin-right: .8rem;
+    }
+  }
+
+  .uk-margin-auto-vertical {
+    height: 100%;
+    width: 100%;
+
+    @include multiple-media(mobileScreenLandscape) {
+      height: auto;
+    }
+  }
+
+  .modal-layout {
+    display: flex;
+    background-color: #ededed;
+    padding: 1.5rem;
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-grow: 1;
+    min-width: 17rem;
+
+    @include multiple-media(mobileScreen, tabletScreen) {
+      flex-direction: column;
+    }
+  }
+
+  &_options {
+    min-width: 35%;
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        cursor: pointer;
+        font-family: "IntegralExtaBold";
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0;
+        color: #000000;
+        -webkit-text-fill-color: #ededed;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000000;
+
+        &.active {
+          -webkit-text-fill-color: #000000;
+        }
+      }
+    }
+
+  }
+
+  &_image {
+    flex-grow: 1;
+    display: none;
+    margin: 1.5rem;
+    padding: 1.5rem;
+
+    @include breakpoint(mobileScreen) {
+      margin: .8rem;
+    }
+
+    @include multiple-media(mobileScreenLandscape) {
+      margin-left: auto;
+      max-width: 50%;
+    }
+
+
+
+    .building-image {
+      display: block;
+
+      @include breakpoint(tablet) {
+        display: none;
+      }
+
+      &--bg {
+        display: none;
+
+        @include breakpoint(tablet) {
+          display: block;
+          background-size: cover;
+          background-position: 50%;
+          height: 50rem;
+          width:100%;
+        }
+      }
+    }
+  }
+}
+// end Layout modal
+
+// Shared
+.divider {
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  height: 1.5rem;
+  display: inline-block;
+}
+
+// Map icons
+.convenience,
+.pointer,
+.drink,
+.food,
+.lifestyle {
+  background-size: cover;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.convenience {
+  background-image: url('../images/convenience.png');
+}
+.drink {
+  background-image: url('../images/drink.png');
+}
+.food {
+  background-image: url('../images/food.png');
+}
+.lifestyle {
+  background-image: url('../images/lifestyle.png');
+}
+
+.pointer {
+  background-image: url('../images/pointer.png');
+}
