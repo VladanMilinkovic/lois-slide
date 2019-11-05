@@ -759,7 +759,7 @@ input {
 
   // Map
   .location {
-    height: calc(100vh - 29rem);
+    height: calc(100vh - 28.4rem);
     min-height: 35rem;
     position: relative;
     margin: 1.5rem;
@@ -1090,7 +1090,7 @@ input {
       }
 
       @include multiple-media(mediaScreen, largeScreen) {
-        height: calc(100vh - 29.5rem);
+        height: calc(100vh - 28.5rem);
       }
 
       &--bg {
@@ -1164,7 +1164,7 @@ input {
 
       @include breakpoint(desktop) {
         display: flex;
-        height: calc(100vh - 16rem);
+        height: calc(100vh - 15.5rem);
         margin-top: 1.5rem;
       }
 
@@ -1312,7 +1312,7 @@ input {
       }
 
       @include multiple-media(largeScreen) {
-        height: calc(100vh - 16rem);
+        height: calc(100vh - 15.5rem);
       }
 
       @include breakpoint(iPadLandscape) {
@@ -2323,6 +2323,19 @@ input {
         width: 100%;
       }
     }
+
+    .uk-position-center-right,
+    .uk-position-center-left {
+      width: 1.5rem !important;
+      top: 96%;
+    }
+
+    .uk-position-center-right {
+      right: -1rem;
+    }
+    .uk-position-center-left {
+      left: -1rem;
+    }
   }
 
   .building-image {
@@ -2547,9 +2560,9 @@ input {
   }
 
   .expand-single-apartment {
-    height: calc(100vh - 16.3rem);
+    height: calc(100vh - 7rem);
     position: absolute;
-    top: 9.3rem;
+    top: 0;
     left: 0;
     z-index: 100;
     display: block;
@@ -2576,9 +2589,10 @@ input {
   }
 
   img {
+    width: 1.5rem;
 
     @include multiple-media(largeScreen) {
-      width: 2.5rem;
+      width: 2rem;
     }
   }
 }
@@ -2643,29 +2657,34 @@ input {
       .uk-button-default {
         border: none;
         border-bottom: 1px solid #000000;
-        line-height: 2.5rem;
+        line-height: 1;
         font-size: 1rem;
         text-align: left;
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 0;
+        align-items: flex-start;
+        padding: 0 0 1rem 0;
         text-transform: unset;
         color: #000;
-        height: 2rem;
 
         @include breakpoint(mobileScreen) {
           font-size: 1.15rem;
-          height: 4rem;
         }
         @include multiple-media(tabletScreen, tabletScreenLandscape) {
           font-size: 1.15rem;
         }
 
-        @include multiple-media(tabletScreen, smallScreen, mediumScreen, largeScreen) {
-          height: 3rem;
-        }
       }
+
+      @media not all and (min-resolution:.001dpcm)
+      { @supports (-webkit-appearance:none) {
+
+        .uk-button-default {
+          @include multiple-media(mobileScreen) {
+            padding-bottom: 1.5rem;
+          }
+        }
+      }}
 
       .uk-dropdown {
         min-width: 10rem;
@@ -2673,7 +2692,11 @@ input {
         margin-top: 0;
 
         a {
-          font-size: 1.4rem;
+          font-size: 1.15rem;
+
+          @include multiple-media(mediumScreen, largeScreen) {
+            font-size: 1rem;
+          }
         }
       }
 
@@ -2684,7 +2707,7 @@ input {
         margin: 0;
         text-align: center;
         color: #000000;
-        -webkit-text-fill-color: #ffffff;
+        -webkit-text-fill-color: transparent;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: #000000;
       }
@@ -2839,8 +2862,12 @@ input {
         margin-top: 1.5rem;
         display: block;
         color: #000;
-        font-size: 1.2rem;
+        font-size: 1rem;
         text-decoration: none;
+
+        @include multiple-media(mobileScreen, tabletScreen) {
+          font-size: 1.15rem;
+        }
 
         &:active {
           color: inherit;

@@ -664,7 +664,7 @@ input {
   }
 }
 .lois .location {
-  height: calc(100vh - 29rem);
+  height: calc(100vh - 28.4rem);
   min-height: 35rem;
   position: relative;
   margin: 1.5rem;
@@ -1010,7 +1010,7 @@ input {
 }
 @media (min-width: 1800px) {
   .lois .building__first {
-    height: calc(100vh - 29.5rem);
+    height: calc(100vh - 28.5rem);
   }
 }
 .lois .building__first--bg {
@@ -1095,7 +1095,7 @@ input {
 @media (min-width: 1024px) {
   .lois .building-second {
     display: flex;
-    height: calc(100vh - 16rem);
+    height: calc(100vh - 15.5rem);
     margin-top: 1.5rem;
   }
 }
@@ -1289,7 +1289,7 @@ input {
 }
 @media (min-width: 1800px) {
   .lois .slider-box .uk-position-relative {
-    height: calc(100vh - 16rem);
+    height: calc(100vh - 15.5rem);
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
@@ -2475,6 +2475,17 @@ input {
     width: 100%;
   }
 }
+.single-apartment .building__first .uk-position-center-right,
+.single-apartment .building__first .uk-position-center-left {
+  width: 1.5rem !important;
+  top: 96%;
+}
+.single-apartment .building__first .uk-position-center-right {
+  right: -1rem;
+}
+.single-apartment .building__first .uk-position-center-left {
+  left: -1rem;
+}
 .single-apartment .building-image {
   width: 65%;
 }
@@ -2679,9 +2690,9 @@ input {
   }
 }
 .action-layer .expand-single-apartment {
-  height: calc(100vh - 16.3rem);
+  height: calc(100vh - 7rem);
   position: absolute;
-  top: 9.3rem;
+  top: 0;
   left: 0;
   z-index: 100;
   display: block;
@@ -2704,9 +2715,12 @@ input {
 .apartments-toggle i {
   font-size: 3.5rem;
 }
+.apartments-toggle img {
+  width: 1.5rem;
+}
 @media (min-width: 1800px) {
   .apartments-toggle img {
-    width: 2.5rem;
+    width: 2rem;
   }
 }
 
@@ -2784,21 +2798,19 @@ input {
 .apartments-search-select__section .uk-button-default {
   border: none;
   border-bottom: 1px solid #000000;
-  line-height: 2.5rem;
+  line-height: 1;
   font-size: 1rem;
   text-align: left;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0;
+  align-items: flex-start;
+  padding: 0 0 1rem 0;
   text-transform: unset;
   color: #000;
-  height: 2rem;
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .apartments-search-select__section .uk-button-default {
     font-size: 1.15rem;
-    height: 4rem;
   }
 }
 @media (min-width: 600px) and (max-width: 899px) {
@@ -2811,24 +2823,13 @@ input {
     font-size: 1.15rem;
   }
 }
-@media (min-width: 600px) and (max-width: 899px) {
-  .apartments-search-select__section .uk-button-default {
-    height: 3rem;
-  }
-}
-@media (min-width: 900px) and (max-width: 1199px) {
-  .apartments-search-select__section .uk-button-default {
-    height: 3rem;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1799px) {
-  .apartments-search-select__section .uk-button-default {
-    height: 3rem;
-  }
-}
-@media (min-width: 1800px) {
-  .apartments-search-select__section .uk-button-default {
-    height: 3rem;
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    @media (min-width: 0px) and (max-width: 599px) {
+      .apartments-search-select__section .uk-button-default {
+        padding-bottom: 1.5rem;
+      }
+    }
   }
 }
 .apartments-search-select__section .uk-dropdown {
@@ -2837,7 +2838,17 @@ input {
   margin-top: 0;
 }
 .apartments-search-select__section .uk-dropdown a {
-  font-size: 1.4rem;
+  font-size: 1.15rem;
+}
+@media (min-width: 1200px) and (max-width: 1799px) {
+  .apartments-search-select__section .uk-dropdown a {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1800px) {
+  .apartments-search-select__section .uk-dropdown a {
+    font-size: 1rem;
+  }
 }
 .apartments-search-select__section--value {
   font-family: "IntegralExtaBold";
@@ -2846,7 +2857,7 @@ input {
   margin: 0;
   text-align: center;
   color: #000000;
-  -webkit-text-fill-color: #ffffff;
+  -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #000000;
 }
@@ -2990,8 +3001,18 @@ input {
   margin-top: 1.5rem;
   display: block;
   color: #000;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-decoration: none;
+}
+@media (min-width: 0px) and (max-width: 599px) {
+  .slide-in-cart__content--link {
+    font-size: 1.15rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  .slide-in-cart__content--link {
+    font-size: 1.15rem;
+  }
 }
 .slide-in-cart__content--link:active {
   color: inherit;
