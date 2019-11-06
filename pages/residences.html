@@ -189,7 +189,10 @@
         <div class="apartments-search">
             <div class="apartments-search-select" id="apartments-search">
                 <div class="apartments-search-select__section">
-                    <button class="uk-button uk-button-default" type="button">Im looking for <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                    <div>
+                        <button class="uk-button uk-button-default" type="button">Im looking for <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <span id="lookingForValue" class="apartments-search-select__section--value">3 Bedroom</span>
+                    </div>
                     <div uk-dropdown="animation: uk-animation-slide-top-small; duration: 300">
                         <ul class="uk-nav uk-dropdown-nav" id="lookingFor" onclick="setSelectedValue(event, 'lookingFor', 'lookingForValue')">
                             <li class="uk-active"><a href="#">Studio</a></li>
@@ -198,10 +201,12 @@
                             <li><a href="#">3 Bedroom</a></li>
                         </ul>
                     </div>
-                    <span id="lookingForValue" class="apartments-search-select__section--value">3 Bedroom</span>
                 </div>
                 <div class="apartments-search-select__section">
-                    <button class="uk-button uk-button-default" type="button">$ Minimum <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                    <div>
+                        <button class="uk-button uk-button-default" type="button">$ Minimum <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <span id="minimumValue" class="apartments-search-select__section--value">2000</span>
+                    </div>
                     <div uk-dropdown="animation: uk-animation-slide-top-small; duration: 300">
                         <ul class="uk-nav uk-dropdown-nav" id="minimum" onclick="setSelectedValue(event, 'minimum', 'minimumValue')">
                             <li class="uk-active"><a href="#">2000</a></li>
@@ -210,11 +215,13 @@
                             <li><a href="#">5000</a></li>
                         </ul>
                     </div>
-                    <span id="minimumValue" class="apartments-search-select__section--value">2000</span>
                 </div>
                 <div class="apartments-search-select__section">
-                    <button class="uk-button uk-button-default" type="button">$ Maximum <i class="fa fa-caret-down" aria-hidden="true"></i></button>
-                    <div uk-dropdown="animation: uk-animation-slide-top-small; duration: 300">
+                    <div>
+                        <button class="uk-button uk-button-default" type="button">$ Maximum <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <span id="maximumValue" class="apartments-search-select__section--value">2000</span>
+                    </div>
+                     <div uk-dropdown="animation: uk-animation-slide-top-small; duration: 300">
                         <ul class="uk-nav uk-dropdown-nav" id="maximum" onclick="setSelectedValue(event, 'maximum', 'maximumValue')">
                             <li class="uk-active"><a href="#">2000</a></li>
                             <li><a href="#">3000</a></li>
@@ -222,7 +229,6 @@
                             <li><a href="#">5000</a></li>
                         </ul>
                     </div>
-                    <span id="maximumValue" class="apartments-search-select__section--value">2000</span>
                 </div>
             </div>
         </div>

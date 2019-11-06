@@ -2809,6 +2809,7 @@ input {
   padding: 0 0 1rem 0;
   text-transform: unset;
   color: #000;
+  width: 100%;
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .apartments-search-select__section .uk-button-default {
