@@ -2302,8 +2302,10 @@ input {
     .uk-active {
 
       img {
-        width: 100% !important;
+        width: auto !important;
         height: 100% !important;
+        display: block;
+        margin: 0 auto;
       }
     }
 
@@ -2885,8 +2887,21 @@ input {
 
       &-mobile {
 
-        &-info {
+        .highlights {
+          font-weight: 600;
+          color: #000000;
+          font-size: 1.15rem;
+          margin: .8rem 0;
+        }
 
+        ul {
+          margin: 0;
+          list-style: none;
+          padding-left: 0;
+        }
+
+        &-info {
+          margin-bottom: .8rem;
         }
       }
     }

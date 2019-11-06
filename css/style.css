@@ -2459,8 +2459,10 @@ input {
   }
 }
 .single-apartment .building__first .uk-active img {
-  width: 100% !important;
+  width: auto !important;
   height: 100% !important;
+  display: block;
+  margin: 0 auto;
 }
 @media (min-width: 600px) and (max-width: 899px) {
   .single-apartment .building__first .uk-position-relative {
@@ -3026,6 +3028,20 @@ input {
   .slide-in-cart__content--link {
     margin: 0.8rem 0 0 0;
   }
+}
+.slide-in-cart__content-mobile .highlights {
+  font-weight: 600;
+  color: #000000;
+  font-size: 1.15rem;
+  margin: 0.8rem 0;
+}
+.slide-in-cart__content-mobile ul {
+  margin: 0;
+  list-style: none;
+  padding-left: 0;
+}
+.slide-in-cart__content-mobile-info {
+  margin-bottom: 0.8rem;
 }
 .slide-out {
   display: none;
