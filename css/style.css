@@ -2520,6 +2520,8 @@ input {
 .single-apartment .description-text ul {
   list-style: none;
   padding-left: 0;
+  color: #000000;
+  margin: 0 0 1.5rem 0;
 }
 .single-apartment .description-text i {
   right: 0;
@@ -2554,6 +2556,7 @@ input {
 .single-apartment .description-text--content {
   font-size: 1rem;
   margin: 1.5rem 0;
+  color: #000000;
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .single-apartment .description-text--content {
@@ -2574,6 +2577,7 @@ input {
 .single-apartment .highlights {
   font-weight: 600;
   color: #000000;
+  margin: 0 0 1.5rem 0;
 }
 .single-apartment .close {
   position: absolute;
@@ -2692,9 +2696,9 @@ input {
   }
 }
 .action-layer .expand-single-apartment {
-  height: calc(100vh - 7rem);
+  height: calc(100vh - 15rem);
   position: absolute;
-  top: 0;
+  top: 8rem;
   left: 0;
   z-index: 100;
   display: block;
@@ -3040,9 +3044,11 @@ input {
   margin: 0;
   list-style: none;
   padding-left: 0;
+  color: #000000;
 }
 .slide-in-cart__content-mobile-info {
   margin-bottom: 0.8rem;
+  color: #000000;
 }
 .slide-out {
   display: none;
@@ -3270,9 +3276,9 @@ input {
 
 .divider {
   border-left: 1px solid #000000;
-  border-right: 1px solid #000000;
   height: 1.5rem;
   display: inline-block;
+  margin: 0 1rem;
 }
 
 .convenience,

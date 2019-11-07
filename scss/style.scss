@@ -2375,6 +2375,8 @@ input {
     ul {
       list-style: none;
       padding-left: 0;
+      color: #000000;
+      margin: 0 0 1.5rem 0;
     }
 
     i {
@@ -2415,6 +2417,7 @@ input {
   .description-text--content {
     font-size: 1rem;
     margin: 1.5rem 0;
+    color: #000000;
 
     @include breakpoint(mobileScreen) {
       font-size: 1.15rem;
@@ -2428,6 +2431,7 @@ input {
   .highlights {
     font-weight: 600;
     color: #000000;
+    margin: 0 0 1.5rem 0;
   }
 
   .close {
@@ -2562,9 +2566,9 @@ input {
   }
 
   .expand-single-apartment {
-    height: calc(100vh - 7rem);
+    height: calc(100vh - 15rem);
     position: absolute;
-    top: 0;
+    top: 8rem;
     left: 0;
     z-index: 100;
     display: block;
@@ -2899,10 +2903,12 @@ input {
           margin: 0;
           list-style: none;
           padding-left: 0;
+          color: #000000;
         }
 
         &-info {
           margin-bottom: .8rem;
+          color: #000000;
         }
       }
     }
@@ -3151,9 +3157,9 @@ input {
 // Shared
 .divider {
   border-left: 1px solid #000000;
-  border-right: 1px solid #000000;
   height: 1.5rem;
   display: inline-block;
+  margin: 0 1rem;
 }
 
 // Map icons
