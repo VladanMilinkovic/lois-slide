@@ -2625,6 +2625,15 @@ input {
   border-bottom: 1px solid #000;
   background-color: #00FFB8;
 }
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    @media (min-width: 0px) and (max-width: 599px) {
+      .action-layer-view {
+        min-height: 7rem;
+      }
+    }
+  }
+}
 @media (min-width: 0px) and (max-width: 599px) {
   .action-layer-view {
     flex-direction: column;
@@ -2834,7 +2843,7 @@ input {
   @supports (-webkit-appearance: none) {
     @media (min-width: 0px) and (max-width: 599px) {
       .apartments-search-select__section .uk-button-default {
-        padding-bottom: 1.5rem;
+        padding-bottom: 0.8rem;
       }
     }
   }

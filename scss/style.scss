@@ -2488,6 +2488,13 @@ input {
     border-bottom: 1px solid #000;
     background-color: #00FFB8;
 
+    @media not all and (min-resolution:.001dpcm)
+    { @supports (-webkit-appearance:none) {
+      @include breakpoint(mobileScreen) {
+        min-height: 7rem;
+      }
+    }}
+
     @include breakpoint(mobileScreen) {
       flex-direction: column;
       padding-top: .8rem;
@@ -2688,7 +2695,7 @@ input {
 
         .uk-button-default {
           @include multiple-media(mobileScreen) {
-            padding-bottom: 1.5rem;
+            padding-bottom: .8rem;
           }
         }
       }}
