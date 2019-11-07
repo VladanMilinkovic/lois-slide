@@ -2579,6 +2579,48 @@ input {
   color: #000000;
   margin: 0 0 1.5rem 0;
 }
+.single-apartment .floorplan {
+  display: flex;
+  margin-bottom: 0.8rem;
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+  .single-apartment .floorplan {
+    margin-bottom: 1.5rem;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1799px) {
+  .single-apartment .floorplan {
+    margin-bottom: 1.5rem;
+  }
+}
+@media (min-width: 1800px) {
+  .single-apartment .floorplan {
+    margin-bottom: 1.5rem;
+  }
+}
+.single-apartment .floorplan img {
+  width: 2rem;
+  margin-right: 0.8rem;
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+  .single-apartment .floorplan img {
+    margin-right: 0.8rem;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1799px) {
+  .single-apartment .floorplan img {
+    margin-right: 0.8rem;
+  }
+}
+@media (min-width: 1800px) {
+  .single-apartment .floorplan img {
+    margin-right: 0.8rem;
+  }
+}
+.single-apartment .floorplan a {
+  color: #000;
+  text-decoration: none;
+}
 .single-apartment .close {
   position: absolute;
   right: 32px;
@@ -2683,11 +2725,11 @@ input {
 .action-layer.expand .action-layer-view {
   background-color: #ffffff;
   width: -webkit-fill-available;
-  margin: 0 1.5rem;
+  margin: 0 1.5rem 1.5rem 1.5rem;
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .action-layer.expand .action-layer-view {
-    margin: 0 0.8rem;
+    margin: 0 0.8rem 0.8rem 0.8rem;
   }
 }
 .action-layer.expand .action-layer-view .lottery-open h1 {
@@ -2895,11 +2937,11 @@ input {
   }
 }
 .slide-in-cart {
-  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .slide-in-cart {
-    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
     flex-basis: 100%;
     width: 100%;
   }
@@ -3048,6 +3090,18 @@ input {
   color: #000000;
   font-size: 1.15rem;
   margin: 0.8rem 0;
+}
+.slide-in-cart__content-mobile .floorplan {
+  display: flex;
+  margin-bottom: 0.8rem;
+}
+.slide-in-cart__content-mobile .floorplan img {
+  width: 2rem;
+  margin-right: 0.8rem;
+}
+.slide-in-cart__content-mobile .floorplan a {
+  color: #000;
+  text-decoration: none;
 }
 .slide-in-cart__content-mobile ul {
   margin: 0;
@@ -3284,7 +3338,7 @@ input {
 }
 
 .divider {
-  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
   height: 1.5rem;
   display: inline-block;
   margin: 0 1rem;

@@ -278,6 +278,11 @@
                                 Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                                 making one of the greenest buildings in Prospect Lefferts Gardens
                             </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
                             <p class="highlights">Unit Features:</p>
                             <ul>
                                 <li>Oak Hardwood Floors</li>
@@ -349,6 +354,11 @@
                                 Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                                 making one of the greenest buildings in Prospect Lefferts Gardens
                             </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
                             <p class="highlights">Unit Features:</p>
                             <ul>
                                 <li>Oak Hardwood Floors</li>
@@ -420,6 +430,11 @@
                                 Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                                 making one of the greenest buildings in Prospect Lefferts Gardens
                             </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
                             <p class="highlights">Unit Features:</p>
                             <ul>
                                 <li>Oak Hardwood Floors</li>
@@ -491,6 +506,11 @@
                                 Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                                 making one of the greenest buildings in Prospect Lefferts Gardens
                             </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
                             <p class="highlights">Unit Features:</p>
                             <ul>
                                 <li>Oak Hardwood Floors</li>
@@ -562,6 +582,11 @@
                                 Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                                 making one of the greenest buildings in Prospect Lefferts Gardens
                             </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
                             <p class="highlights">Unit Features:</p>
                             <ul>
                                 <li>Oak Hardwood Floors</li>
@@ -633,6 +658,11 @@
                                 Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                                 making one of the greenest buildings in Prospect Lefferts Gardens
                             </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
                             <p class="highlights">Unit Features:</p>
                             <ul>
                                 <li>Oak Hardwood Floors</li>
@@ -704,6 +734,11 @@
                                 Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                                 making one of the greenest buildings in Prospect Lefferts Gardens
                             </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
                             <p class="highlights">Unit Features:</p>
                             <ul>
                                 <li>Oak Hardwood Floors</li>
@@ -776,6 +811,11 @@
                                 Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                                 making one of the greenest buildings in Prospect Lefferts Gardens
                             </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
                             <p class="highlights">Unit Features:</p>
                             <ul>
                                 <li>Oak Hardwood Floors</li>
@@ -846,6 +886,12 @@
                             Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
                             making one of the greenest buildings in Prospect Lefferts Gardens
                         </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="./images/plan.svg" alt="plan">
+                            <a href="#">Download</a>
+                        </div>
+
                         <p class="highlights">Unit Features:</p>
                         <ul>
                             <li>Oak Hardwood Floors</li>
@@ -986,9 +1032,11 @@
                 singleImage.style.display = "block";
                 link.innerHTML = "Learn More";
             }
+
         }
 
         if(check) {
+
             let el = document.getElementById(id);
 
             let text = el.getElementsByClassName("slide-in-cart__content-mobile")[0];
@@ -1001,13 +1049,21 @@
                 slider.style.display = "block";
                 singleImage.style.display = "none";
                 link.innerHTML = "";
-            } else {
-                text.style.display = "none";
-                slider.style.display = "none";
-                singleImage.style.display = "block";
-                link.innerHTML = "Learn More";
+            }
+
+            if(openCards.includes(id)) {
+                let index = openCards.indexOf(id);
+                if (index > -1) {
+                    text.style.display = "none";
+                    slider.style.display = "none";
+                    singleImage.style.display = "block";
+                    link.innerHTML = "Learn More";
+                    openCards.splice(index, 1);
+                }
+                return;
             }
         }
+
         openCards.push(id);
     }
 </script>
