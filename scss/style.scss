@@ -2436,6 +2436,7 @@ input {
 
   .floorplan {
     display: flex;
+    align-items: center;
     margin-bottom: .8rem;
 
     @include multiple-media(smallScreen, mediumScreen, largeScreen) {
@@ -2515,6 +2516,10 @@ input {
     { @supports (-webkit-appearance:none) {
       @include breakpoint(mobileScreen) {
         min-height: 7rem;
+      }
+
+      @include multiple-media(mobileScreenLandscape) {
+        padding-bottom: 2.5rem;
       }
     }}
 
@@ -2931,6 +2936,7 @@ input {
 
         .floorplan {
           display: flex;
+          align-items: center;
           margin-bottom: .8rem;
 
           img {

@@ -2581,6 +2581,7 @@ input {
 }
 .single-apartment .floorplan {
   display: flex;
+  align-items: center;
   margin-bottom: 0.8rem;
 }
 @media (min-width: 900px) and (max-width: 1199px) {
@@ -2672,6 +2673,11 @@ input {
     @media (min-width: 0px) and (max-width: 599px) {
       .action-layer-view {
         min-height: 7rem;
+      }
+    }
+    @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
+      .action-layer-view {
+        padding-bottom: 2.5rem;
       }
     }
   }
@@ -3093,6 +3099,7 @@ input {
 }
 .slide-in-cart__content-mobile .floorplan {
   display: flex;
+  align-items: center;
   margin-bottom: 0.8rem;
 }
 .slide-in-cart__content-mobile .floorplan img {
