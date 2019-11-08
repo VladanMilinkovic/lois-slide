@@ -875,47 +875,50 @@
                         <img src="./images/close.svg" class="description-text-close" alt="Close" onclick="closeSingleLayer()">
                         <h2 class="description-text--black">3 BED<div class="divider"></div>2 BATH</h2>
                         <h2 class="description-text--white">120<div class="divider"></div>$2000</h2>
-                        <p class="description-text--content">
-                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
-                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
-                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
-                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
-                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
-                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
-                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
-                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
-                            making one of the greenest buildings in Prospect Lefferts Gardens
-                        </p>
-                        <p class="highlights">Floorplan</p>
-                        <div class="floorplan">
-                            <img src="./images/plan.svg" alt="plan">
-                            <a href="#">Download</a>
+                        <div class="content-wrapper">
+                            <p class="description-text--content">
+                                Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                                Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                                With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                                via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                                This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                                is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                                table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                                Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                                making one of the greenest buildings in Prospect Lefferts Gardens
+                            </p>
+                            <p class="highlights">Floorplan</p>
+                            <div class="floorplan">
+                                <img src="./images/plan.svg" alt="plan">
+                                <a href="#">Download</a>
+                            </div>
+
+                            <p class="highlights">Unit Features:</p>
+                            <ul>
+                                <li>Oak Hardwood Floors</li>
+                                <li>Stainless Steel GE Appliances</li>
+                                <li>Caesarstone Countertops</li>
+                                <li>Bosch Washer/Dryer</li>
+                                <li>Modern Tiled Batht</li>
+                                <li>Oversized Windows</li>
+                            </ul>
+                            <p class="highlights">Building Amenities:</p>
+                            <ul>
+                                <li>Attended Lobby</li>
+                                <li>Package Room for Fresh Deliveries</li>
+                                <li>Covered Parking</li>
+                                <li>Indoor Bike Room</li>
+                                <li>Storage Lockers</li>
+                                <li>Dog Run and Washing Station</li>
+                                <li>Fitness Center</li>
+                                <li>Yoga Room</li>
+                                <li>Quiet Co-working area</li>
+                                <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                                <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                                <li>Private Rooftop Garden Plots</li>
+                            </ul>
                         </div>
 
-                        <p class="highlights">Unit Features:</p>
-                        <ul>
-                            <li>Oak Hardwood Floors</li>
-                            <li>Stainless Steel GE Appliances</li>
-                            <li>Caesarstone Countertops</li>
-                            <li>Bosch Washer/Dryer</li>
-                            <li>Modern Tiled Batht</li>
-                            <li>Oversized Windows</li>
-                        </ul>
-                        <p class="highlights">Building Amenities:</p>
-                        <ul>
-                            <li>Attended Lobby</li>
-                            <li>Package Room for Fresh Deliveries</li>
-                            <li>Covered Parking</li>
-                            <li>Indoor Bike Room</li>
-                            <li>Storage Lockers</li>
-                            <li>Dog Run and Washing Station</li>
-                            <li>Fitness Center</li>
-                            <li>Yoga Room</li>
-                            <li>Quiet Co-working area</li>
-                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
-                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
-                            <li>Private Rooftop Garden Plots</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -1012,6 +1015,8 @@
     function closeSingleLayer() {
         let element = document.getElementById("single-apartment");
         element.classList.remove("expand-single-apartment");
+        document.getElementById("apartments-toggle").style.visibility = "visible";
+        document.getElementById("apartments-search").style.visibility = "visible";
     }
 
     function showMore(id) {

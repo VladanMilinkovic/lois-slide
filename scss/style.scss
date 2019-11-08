@@ -2353,12 +2353,12 @@ input {
 
     .uk-slideshow-items {
       height: 100%;
+      min-height: 100% !important;
     }
   }
 
   .building-first-description {
     margin-left: 1.5rem;
-    overflow-y: auto;
     width: 33%;
 
     @include breakpoint(mobileScreen) {
@@ -2367,6 +2367,11 @@ input {
 
     @include multiple-media(tabletScreenLandscape) {
       width: 37%;
+    }
+
+    .content-wrapper {
+      max-height: calc(100vh - 21rem);
+      overflow: auto;
     }
   }
 
@@ -2392,6 +2397,10 @@ input {
       right: 0;
       width: 1.5rem;
     }
+
+    &--content {
+      margin-top: 0 !important;
+    }
   }
 
   .description-text--black {
@@ -2407,11 +2416,10 @@ input {
     font-family: "IntegralExtaBold";
     font-size: 2.2rem;
     text-transform: uppercase;
-    margin: 0;
+    margin: 0 0 1.5rem 0;
     color: #000000;
     -webkit-text-fill-color: #ffffff;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #000000;
   }
 
   .description-text--content {
@@ -2431,7 +2439,7 @@ input {
   .highlights {
     font-weight: 600;
     color: #000000;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1rem 0;
   }
 
   .floorplan {
@@ -2735,9 +2743,12 @@ input {
 
         a {
           font-size: 1.15rem;
+          color: #000000;
 
           @include multiple-media(mediumScreen, largeScreen) {
             font-size: 1rem;
+            color: #000000;
+
           }
         }
       }
@@ -2901,7 +2912,7 @@ input {
       }
 
       &--link {
-        margin-top: 1.5rem;
+        margin-top: 1rem;
         display: block;
         color: #000;
         font-size: 1rem;
@@ -3210,7 +3221,7 @@ input {
   border-right: 1px solid #000000;
   height: 1.5rem;
   display: inline-block;
-  margin: 0 1rem;
+  margin: 0 .5rem;
 }
 
 // Map icons
