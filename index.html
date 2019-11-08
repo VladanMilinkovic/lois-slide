@@ -1044,7 +1044,7 @@
             let slider = el.getElementsByClassName("slide-in-cart__slider")[0];
             let link = el.getElementsByClassName("slide-in-cart__content--link")[0];
 
-            if(text.style.display === "none") {
+            if(slider.style.display === "none") {
                 text.style.display = "block";
                 slider.style.display = "block";
                 singleImage.style.display = "none";
@@ -1052,16 +1052,9 @@
             }
 
             if(openCards.includes(id)) {
-                let index = openCards.indexOf(id);
-                if (index > -1) {
-                    text.style.display = "none";
-                    slider.style.display = "none";
-                    singleImage.style.display = "block";
-                    link.innerHTML = "Learn More";
-                    openCards.splice(index, 1);
-                }
                 return;
             }
+
         }
 
         openCards.push(id);

@@ -1037,9 +1037,11 @@
                 singleImage.style.display = "block";
                 link.innerHTML = "Learn More";
             }
+
         }
 
         if(check) {
+
             let el = document.getElementById(id);
 
             let text = el.getElementsByClassName("slide-in-cart__content-mobile")[0];
@@ -1047,18 +1049,19 @@
             let slider = el.getElementsByClassName("slide-in-cart__slider")[0];
             let link = el.getElementsByClassName("slide-in-cart__content--link")[0];
 
-            if(text.style.display === "none") {
+            if(slider.style.display === "none") {
                 text.style.display = "block";
                 slider.style.display = "block";
                 singleImage.style.display = "none";
                 link.innerHTML = "";
-            } else {
-                text.style.display = "none";
-                slider.style.display = "none";
-                singleImage.style.display = "block";
-                link.innerHTML = "Learn More";
             }
+
+            if(openCards.includes(id)) {
+                return;
+            }
+
         }
+
         openCards.push(id);
     }
 </script>
