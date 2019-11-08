@@ -2480,13 +2480,17 @@ input {
 .single-apartment .building__first .uk-position-center-right,
 .single-apartment .building__first .uk-position-center-left {
   width: 1.5rem !important;
-  top: 96%;
+  top: 97%;
 }
 .single-apartment .building__first .uk-position-center-right {
   right: -1rem;
+  color: #000000;
+  padding: 0;
 }
 .single-apartment .building__first .uk-position-center-left {
   left: -1rem;
+  color: #000000;
+  padding: 0 0 0 0.5rem;
 }
 .single-apartment .building-image {
   width: 65%;
@@ -2759,9 +2763,9 @@ input {
   }
 }
 .action-layer .expand-single-apartment {
-  height: calc(100vh - 15rem);
+  height: calc(100vh - 13.5rem);
   position: absolute;
-  top: 8rem;
+  top: 7rem;
   left: 0;
   z-index: 100;
   display: block;
