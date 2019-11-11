@@ -2514,6 +2514,11 @@ input {
     }
   }
 }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  .single-apartment .building-first-description .content-wrapper {
+    max-height: calc(100vh - 63rem);
+  }
+}
 .single-apartment .description-text ul {
   list-style: none;
   padding-left: 0;
@@ -2671,7 +2676,7 @@ input {
   @supports (-webkit-appearance: none) {
     @media (min-width: 0px) and (max-width: 599px) {
       .action-layer-view {
-        min-height: 7rem;
+        min-height: 6rem;
       }
     }
     @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
@@ -2767,7 +2772,7 @@ input {
 @media (min-width: 0px) and (max-width: 599px) {
   .apartments-toggle {
     margin-left: 0;
-    position: relative;
+    top: 0;
     width: fit-content;
     width: -moz-fit-content;
   }

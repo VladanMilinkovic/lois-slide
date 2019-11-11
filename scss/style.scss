@@ -2381,6 +2381,10 @@ input {
         max-height: calc(100vh - 19.5rem);
 
       }}
+
+      @include multiple-media(iPad) {
+        max-height: calc(100vh - 63rem);
+      }
     }
   }
 
@@ -2532,7 +2536,7 @@ input {
     @media not all and (min-resolution:.001dpcm)
     { @supports (-webkit-appearance:none) {
       @include breakpoint(mobileScreen) {
-        min-height: 7rem;
+        min-height: 6rem;
       }
 
       @include multiple-media(mobileScreenLandscape) {
@@ -2644,7 +2648,8 @@ input {
 
   @include breakpoint(mobileScreen) {
     margin-left: 0;
-    position: relative;
+    top: 0;
+    // position: relative;
     width: fit-content;
     width: -moz-fit-content;
   }
