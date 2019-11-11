@@ -2518,6 +2518,13 @@ input {
   .single-apartment .building-first-description .content-wrapper {
     max-height: calc(100vh - 63rem);
   }
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      .single-apartment .building-first-description .content-wrapper {
+        max-height: calc(100vh - 65rem);
+      }
+    }
+  }
 }
 .single-apartment .description-text ul {
   list-style: none;

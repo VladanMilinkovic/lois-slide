@@ -2384,7 +2384,15 @@ input {
 
       @include multiple-media(iPad) {
         max-height: calc(100vh - 63rem);
+
+        @media not all and (min-resolution:.001dpcm)
+        { @supports (-webkit-appearance:none) {
+
+          max-height: calc(100vh - 65rem);
+
+        }}
       }
+
     }
   }
 
