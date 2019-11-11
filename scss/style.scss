@@ -2304,6 +2304,11 @@ input {
         height: 100% !important;
         display: block;
         margin: 0 auto;
+
+        @include multiple-media(iPad) {
+          width: 100% !important;
+          height: auto !important;
+        }
       }
     }
 
