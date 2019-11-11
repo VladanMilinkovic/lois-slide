@@ -2114,6 +2114,8 @@ input {
     @include multiple-media(mobileScreen, mobileScreenLandscape) {
       padding: 0 .8rem;
       margin-top: .8rem;
+      flex-direction: column;
+      align-items: flex-start !important;
     }
 
     @include multiple-media(mobileScreenLandscape) {
