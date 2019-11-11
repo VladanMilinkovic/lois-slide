@@ -2622,6 +2622,10 @@ input {
 
       .apartments-search-select {
 
+        @include multiple-media(mobileScreen, mobileScreenLandscape) {
+          margin-top: .8rem;
+        }
+
         @include multiple-media(tabletScreen) {
           padding-left: .8rem;
           padding-right: 0;
