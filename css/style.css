@@ -574,7 +574,7 @@ input {
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .lois {
-    padding-bottom: 2.5rem;
+    padding-bottom: 3rem;
   }
 }
 .lois-dots {
@@ -2233,11 +2233,13 @@ input {
 @media (min-width: 0px) and (max-width: 599px) {
   .lottery-layer .lottery-open {
     padding: 0 0.8rem;
+    margin-top: 0.8rem;
   }
 }
 @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
   .lottery-layer .lottery-open {
     padding: 0 0.8rem;
+    margin-top: 0.8rem;
   }
 }
 @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
@@ -2274,26 +2276,6 @@ input {
 .lottery-layer .lottery-open h1 {
   margin: 0;
 }
-@media (min-width: 0px) and (max-width: 599px) {
-  .lottery-layer .lottery-open h1 {
-    text-align: center;
-  }
-}
-@media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
-  .lottery-layer .lottery-open h1 {
-    text-align: center;
-  }
-}
-@media (min-width: 0px) and (max-width: 599px) {
-  .lottery-layer .lottery-open .click-here {
-    display: none;
-  }
-}
-@media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
-  .lottery-layer .lottery-open .click-here {
-    display: none;
-  }
-}
 .lottery-layer .lottery-open .click-here a {
   text-decoration: none;
 }
@@ -2303,7 +2285,7 @@ input {
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .lottery-layer .lottery-open .learn-more {
-    display: block;
+    display: block !important;
     -webkit-text-fill-color: #00FFB8;
   }
   .lottery-layer .lottery-open .learn-more:hover {
@@ -2314,7 +2296,7 @@ input {
 }
 @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
   .lottery-layer .lottery-open .learn-more {
-    display: block;
+    display: block !important;
     -webkit-text-fill-color: #00FFB8;
   }
   .lottery-layer .lottery-open .learn-more:hover {
@@ -2701,19 +2683,9 @@ input {
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .action-layer-view {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
-  }
-}
-@media (min-width: 0px) and (max-width: 599px) {
-  .action-layer-view .lottery-open__title--black {
-    display: none !important;
-  }
-}
-@media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
-  .action-layer-view .lottery-open__title--black {
-    display: none !important;
   }
 }
 .action-layer.expand {

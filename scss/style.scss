@@ -678,7 +678,7 @@ input {
   padding: 4rem 0 3.6rem 0;
 
   @include breakpoint(mobileScreen) {
-    padding-bottom: 2.5rem;
+    padding-bottom: 3rem;
   }
 
   @media screen and (min-width: 601px) and (max-width: 1024px) {
@@ -2113,6 +2113,7 @@ input {
 
     @include multiple-media(mobileScreen, mobileScreenLandscape) {
       padding: 0 .8rem;
+      margin-top: .8rem;
     }
 
     @include multiple-media(mobileScreenLandscape) {
@@ -2154,14 +2155,11 @@ input {
 
       @include multiple-media(mobileScreen, mobileScreenLandscape) {
         //font-size: 2.4rem;
-        text-align: center;
+        // text-align: center;
       }
     }
 
     .click-here {
-      @include multiple-media(mobileScreen, mobileScreenLandscape) {
-        display: none;
-      }
 
       a {
         text-decoration: none;
@@ -2172,7 +2170,7 @@ input {
       display: none;
       -webkit-text-fill-color: #00FFB8;
       @include multiple-media(mobileScreen, mobileScreenLandscape) {
-        display: block;
+        display: block !important;
         -webkit-text-fill-color: #00FFB8;
 
         &:hover {
@@ -2543,7 +2541,7 @@ input {
     }}
 
     @include breakpoint(mobileScreen) {
-      flex-direction: column;
+      flex-direction: column-reverse;
       padding-top: .8rem;
       padding-bottom: .8rem;
     }
@@ -2551,7 +2549,7 @@ input {
     .lottery-open__title--black {
 
       @include multiple-media(mobileScreen, mobileScreenLandscape) {
-        display: none !important;
+
       }
     }
   }
