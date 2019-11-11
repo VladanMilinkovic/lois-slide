@@ -2376,6 +2376,13 @@ input {
     .content-wrapper {
       max-height: calc(100vh - 21rem);
       overflow: auto;
+
+      @media not all and (min-resolution:.001dpcm)
+      { @supports (-webkit-appearance:none) {
+
+        max-height: calc(100vh - 19.5rem);
+
+      }}
     }
   }
 
@@ -2613,13 +2620,20 @@ input {
   }
 
   .expand-single-apartment {
-    height: calc(100vh - 13.5rem);
+    height: calc(100vh - 15rem);
     position: absolute;
-    top: 7rem;
+    top: 8rem;
     left: 0;
     z-index: 100;
     display: block;
     background-color: #ffffff;
+
+    @media not all and (min-resolution:.001dpcm)
+    { @supports (-webkit-appearance:none) {
+
+      height: calc(100vh - 13.5rem);
+      top: 7rem;
+    }}
   }
 }
 // Action Layer end
