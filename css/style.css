@@ -2621,7 +2621,7 @@ input {
   }
 }
 .single-apartment .floorplan img {
-  width: 2rem;
+  width: 1.5rem;
   margin-right: 0.8rem;
 }
 @media (min-width: 900px) and (max-width: 1199px) {
@@ -2693,7 +2693,7 @@ input {
   @supports (-webkit-appearance: none) {
     @media (min-width: 0px) and (max-width: 599px) {
       .action-layer-view {
-        min-height: 6rem;
+        min-height: 7.5rem;
       }
     }
     @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
@@ -2754,12 +2754,12 @@ input {
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .action-layer.expand .action-layer-view .apartments-search-select {
-    margin-top: 0.8rem;
+    margin-top: 1.5rem;
   }
 }
 @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
   .action-layer.expand .action-layer-view .apartments-search-select {
-    margin-top: 0.8rem;
+    margin-top: 1.5rem;
   }
 }
 @media (min-width: 600px) and (max-width: 899px) {
@@ -2776,7 +2776,7 @@ input {
 .action-layer .expand-single-apartment {
   height: calc(100vh - 15rem);
   position: absolute;
-  top: 8rem;
+  top: 8.3rem;
   left: 0;
   z-index: 100;
   display: block;
@@ -2785,8 +2785,18 @@ input {
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) {
     .action-layer .expand-single-apartment {
-      height: calc(100vh - 13.5rem);
-      top: 7rem;
+      height: calc(100vh - 14.5rem);
+      top: 7.5rem;
+    }
+  }
+}
+.action-layer .expand-single-apartment .building-first-description {
+  overflow-y: hidden;
+}
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .action-layer .expand-single-apartment .building-first-description {
+      overflow-y: hidden;
     }
   }
 }
@@ -2809,11 +2819,6 @@ input {
 }
 .apartments-toggle img {
   width: 1.5rem;
-}
-@media (min-width: 1800px) {
-  .apartments-toggle img {
-    width: 2rem;
-  }
 }
 
 .apartments-search {
@@ -3123,6 +3128,9 @@ input {
     margin: 0.8rem 0 0 0;
   }
 }
+.slide-in-cart__content-mobile {
+  font-size: 1.15rem;
+}
 .slide-in-cart__content-mobile .highlights {
   font-weight: 600;
   color: #000000;
@@ -3135,7 +3143,7 @@ input {
   margin-bottom: 0.8rem;
 }
 .slide-in-cart__content-mobile .floorplan img {
-  width: 2rem;
+  width: 1.5rem;
   margin-right: 0.8rem;
 }
 .slide-in-cart__content-mobile .floorplan a {
@@ -3151,6 +3159,7 @@ input {
 .slide-in-cart__content-mobile-info {
   margin-bottom: 0.8rem;
   color: #000000;
+  font-size: 1.15rem;
 }
 .slide-out {
   display: none;

@@ -2480,7 +2480,7 @@ input {
     }
 
     img {
-      width: 2rem;
+      width: 1.5rem;
       margin-right: .8rem;
 
       @include multiple-media(smallScreen, mediumScreen, largeScreen) {
@@ -2551,7 +2551,7 @@ input {
     @media not all and (min-resolution:.001dpcm)
     { @supports (-webkit-appearance:none) {
       @include breakpoint(mobileScreen) {
-        min-height: 6rem;
+        min-height: 7.5rem;
       }
 
       @include multiple-media(mobileScreenLandscape) {
@@ -2625,7 +2625,7 @@ input {
       .apartments-search-select {
 
         @include multiple-media(mobileScreen, mobileScreenLandscape) {
-          margin-top: .8rem;
+          margin-top: 1.5rem;
         }
 
         @include multiple-media(tabletScreen) {
@@ -2643,7 +2643,7 @@ input {
   .expand-single-apartment {
     height: calc(100vh - 15rem);
     position: absolute;
-    top: 8rem;
+    top: 8.3rem;
     left: 0;
     z-index: 100;
     display: block;
@@ -2652,9 +2652,19 @@ input {
     @media not all and (min-resolution:.001dpcm)
     { @supports (-webkit-appearance:none) {
 
-      height: calc(100vh - 13.5rem);
-      top: 7rem;
+      height: calc(100vh - 14.5rem);
+      top: 7.5rem;
     }}
+
+    .building-first-description {
+      overflow-y: hidden;
+
+      @media not all and (min-resolution:.001dpcm)
+      { @supports (-webkit-appearance:none) {
+
+        overflow-y: hidden;
+      }}
+    }
   }
 }
 // Action Layer end
@@ -2679,10 +2689,6 @@ input {
 
   img {
     width: 1.5rem;
-
-    @include multiple-media(largeScreen) {
-      width: 2rem;
-    }
   }
 }
 .apartments-search {
@@ -2977,6 +2983,7 @@ input {
       }
 
       &-mobile {
+        font-size: 1.15rem;
 
         .highlights {
           font-weight: 600;
@@ -2991,7 +2998,7 @@ input {
           margin-bottom: .8rem;
 
           img {
-            width: 2rem;
+            width: 1.5rem;
             margin-right: .8rem;
           }
 
@@ -3011,6 +3018,7 @@ input {
         &-info {
           margin-bottom: .8rem;
           color: #000000;
+          font-size: 1.15rem;
         }
       }
     }
