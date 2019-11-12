@@ -2106,6 +2106,7 @@ input {
   }
 
   .lottery-open {
+    display: block;
 
     @include breakpoint(tablet) {
       margin-left: 1.5rem;
@@ -2337,6 +2338,10 @@ input {
     .uk-position-center-left {
       width: 1.5rem !important;
       top: 97%;
+
+      @media screen and (min-width: 1601px) {
+        top: 98%;
+      }
     }
 
     .uk-position-center-right {
@@ -2553,7 +2558,7 @@ input {
     @media not all and (min-resolution:.001dpcm)
     { @supports (-webkit-appearance:none) {
       @include breakpoint(mobileScreen) {
-        min-height: 7.5rem;
+        min-height: 6rem;
       }
 
       @include multiple-media(mobileScreenLandscape) {
@@ -2617,6 +2622,17 @@ input {
         margin: 0 .8rem .8rem .8rem;
       }
 
+      @media not all and (min-resolution:.001dpcm)
+      { @supports (-webkit-appearance:none) {
+        @include breakpoint(mobileScreen) {
+          min-height: 7.5rem;
+        }
+
+        @include multiple-media(mobileScreenLandscape) {
+          padding-bottom: 2.5rem;
+        }
+      }}
+
       .lottery-open {
 
         h1 {
@@ -2655,7 +2671,7 @@ input {
     { @supports (-webkit-appearance:none) {
 
       height: calc(100vh - 14.5rem);
-      top: 7.5rem;
+      top: 7.6rem;
     }}
 
     .building-first-description {

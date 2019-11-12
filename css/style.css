@@ -2225,6 +2225,9 @@ input {
     width: 86vw;
   }
 }
+.lottery-layer .lottery-open {
+  display: block;
+}
 @media (min-width: 600px) {
   .lottery-layer .lottery-open {
     margin-left: 1.5rem;
@@ -2478,6 +2481,12 @@ input {
   width: 1.5rem !important;
   top: 97%;
 }
+@media screen and (min-width: 1601px) {
+  .single-apartment .building__first .uk-position-center-right,
+.single-apartment .building__first .uk-position-center-left {
+    top: 98%;
+  }
+}
 .single-apartment .building__first .uk-position-center-right {
   right: -1rem;
   color: #000000;
@@ -2697,7 +2706,7 @@ input {
   @supports (-webkit-appearance: none) {
     @media (min-width: 0px) and (max-width: 599px) {
       .action-layer-view {
-        min-height: 7.5rem;
+        min-height: 6rem;
       }
     }
     @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
@@ -2753,6 +2762,20 @@ input {
     margin: 0 0.8rem 0.8rem 0.8rem;
   }
 }
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    @media (min-width: 0px) and (max-width: 599px) {
+      .action-layer.expand .action-layer-view {
+        min-height: 7.5rem;
+      }
+    }
+    @media (max-height: 599px) and (max-width: 830px) and (orientation: landscape) {
+      .action-layer.expand .action-layer-view {
+        padding-bottom: 2.5rem;
+      }
+    }
+  }
+}
 .action-layer.expand .action-layer-view .lottery-open h1 {
   display: none;
 }
@@ -2790,7 +2813,7 @@ input {
   @supports (-webkit-appearance: none) {
     .action-layer .expand-single-apartment {
       height: calc(100vh - 14.5rem);
-      top: 7.5rem;
+      top: 7.6rem;
     }
   }
 }

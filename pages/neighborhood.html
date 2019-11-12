@@ -1666,6 +1666,10 @@
         let slides = document.getElementById('slide-in');
         let el = document.getElementById("single-apartment");
 
+        if (screenWidth.matches) { // If media query matches
+            document.getElementById("lottery-open").style.display = "none";
+        }
+
         if(document.documentElement.style.overflow==="hidden") {
             document.documentElement.style.overflow="auto"
         } else {
