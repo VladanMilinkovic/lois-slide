@@ -177,7 +177,7 @@
 
     <div id="action-layer" class="lottery-layer action-layer">
         <div class="action-layer-view">
-            <div class="lottery-open">
+            <div class="lottery-open" id="lottery-open">
                 <h1 class="lottery-open__title--black">CALL TO ACTION LINE</h1>
                 <h1 class="lottery-open__title--white click-here" onclick="toggleActionLayer()">Search</h1>
             </div>
@@ -185,7 +185,7 @@
             <div id="apartments-toggle" class="apartments-toggle"  onclick="toggleActionLayer()">
                 <img src="./images/down.svg" alt="Close">
             </div>
-            <div class="apartments-search">
+            <div class="apartments-search" onclick="showActionLine()">
                 <div class="apartments-search-select" id="apartments-search">
                     <div class="apartments-search-select__section">
                         <div>
@@ -930,6 +930,13 @@
 
 <script>
     let openCards = [];
+    let screenWidth = window.matchMedia("(max-width: 700px)");
+
+    function showActionLine() {
+        if (screenWidth.matches) { // If media query matches
+            document.getElementById("lottery-open").style.display = "block";
+        }
+    }
 
 
     function toggleNavIcon() {

@@ -2112,10 +2112,12 @@ input {
     }
 
     @include multiple-media(mobileScreen, mobileScreenLandscape) {
+      display: none;
       padding: 0 .8rem;
       margin-top: .8rem;
       flex-direction: column;
       align-items: flex-start !important;
+      transition: .3s;
     }
 
     @include multiple-media(mobileScreenLandscape) {
