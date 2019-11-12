@@ -2481,6 +2481,18 @@ input {
   width: 1.5rem !important;
   top: 97%;
 }
+@media screen and (min-width: 1200px) and (max-width: 1366px) {
+  .single-apartment .building__first .uk-position-center-right,
+.single-apartment .building__first .uk-position-center-left {
+    top: 97%;
+  }
+}
+@media screen and (min-width: 1367px) and (max-width: 1600px) {
+  .single-apartment .building__first .uk-position-center-right,
+.single-apartment .building__first .uk-position-center-left {
+    top: 97.5%;
+  }
+}
 @media screen and (min-width: 1601px) {
   .single-apartment .building__first .uk-position-center-right,
 .single-apartment .building__first .uk-position-center-left {

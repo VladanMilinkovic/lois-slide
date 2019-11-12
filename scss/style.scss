@@ -2339,6 +2339,16 @@ input {
       width: 1.5rem !important;
       top: 97%;
 
+      //from 1200px to 1366px
+      @media screen and (min-width: 1200px) and (max-width: 1366px) {
+        top: 97%;
+      }
+
+      //from 1367px to 1600px
+      @media screen and (min-width: 1367px) and (max-width: 1600px) {
+        top: 97.5%;
+      }
+
       @media screen and (min-width: 1601px) {
         top: 98%;
       }
