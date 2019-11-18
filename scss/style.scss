@@ -3335,19 +3335,33 @@ input {
 
   .lottery-open {
     display: flex;
+    margin-left: 0;
+    align-items: center;
   }
 
   .slide-in {
     overflow-y: auto;
-    margin-top: 1.5rem
+    margin-top: 1.5rem;
+
+    @include multiple-media(mobileScreen) {
+      margin-top: .75rem;
+    }
   }
 
   .action-layer-view {
     background-color: #ffffff;
     margin-top: 4rem;
+    width: calc(100% - 3rem);
+    margin-left: 1.5rem;
 
     @include multiple-media(mobileScreen) {
       min-height: 7.5rem;
+      width: calc(100% - 1.5rem);
+      margin-left: .75rem;
+    }
+
+    @include multiple-media(mediumScreen, largeScreen) {
+
     }
   }
 
@@ -3355,5 +3369,9 @@ input {
     @include multiple-media(tabletScreen) {
       top: 12rem;
     }
+  }
+
+  .apartments-search-select {
+    padding-right: 0;
   }
 }

@@ -3474,24 +3474,38 @@ input {
 }
 .apartments-page .lottery-open {
   display: flex;
+  margin-left: 0;
+  align-items: center;
 }
 .apartments-page .slide-in {
   overflow-y: auto;
   margin-top: 1.5rem;
 }
+@media (min-width: 0px) and (max-width: 599px) {
+  .apartments-page .slide-in {
+    margin-top: 0.75rem;
+  }
+}
 .apartments-page .action-layer-view {
   background-color: #ffffff;
   margin-top: 4rem;
+  width: calc(100% - 3rem);
+  margin-left: 1.5rem;
 }
 @media (min-width: 0px) and (max-width: 599px) {
   .apartments-page .action-layer-view {
     min-height: 7.5rem;
+    width: calc(100% - 1.5rem);
+    margin-left: 0.75rem;
   }
 }
 @media (min-width: 600px) and (max-width: 899px) {
   .apartments-page .expand-single-apartment {
     top: 12rem;
   }
+}
+.apartments-page .apartments-search-select {
+  padding-right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
