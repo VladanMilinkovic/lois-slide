@@ -2430,7 +2430,7 @@ input {
   top: 7rem;
   left: 0;
   z-index: 100;
-  margin: 1.5rem;
+  padding: 1.5rem;
   background-color: #ffffff;
 }
 @media (min-width: 0px) and (max-width: 599px) {
@@ -2540,7 +2540,7 @@ input {
   }
 }
 .single-apartment .building-first-description .content-wrapper {
-  max-height: calc(100vh - 21rem);
+  max-height: calc(100vh - 12.7rem);
   overflow: auto;
 }
 @media not all and (min-resolution: 0.001dpcm) {
@@ -2577,7 +2577,7 @@ input {
 }
 .single-apartment .description-text-close {
   position: absolute;
-  right: 0;
+  right: 1.5rem;
   width: 1.5rem;
 }
 .single-apartment .description-text--content {
@@ -2814,9 +2814,9 @@ input {
   }
 }
 .action-layer .expand-single-apartment {
-  height: calc(100vh - 15rem);
+  height: calc(100vh - 7rem);
   position: absolute;
-  top: 8.3rem;
+  top: 4rem;
   left: 0;
   z-index: 100;
   display: block;

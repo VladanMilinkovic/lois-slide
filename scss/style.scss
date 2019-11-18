@@ -2282,7 +2282,7 @@ input {
   top: 7rem;
   left: 0;
   z-index: 100;
-  margin: 1.5rem;
+  padding: 1.5rem;
   background-color: #ffffff;
 
   @include breakpoint(mobileScreen) {
@@ -2397,7 +2397,7 @@ input {
     }
 
     .content-wrapper {
-      max-height: calc(100vh - 21rem);
+      max-height: calc(100vh - 12.7rem);
       overflow: auto;
 
       @media not all and (min-resolution:.001dpcm)
@@ -2440,7 +2440,7 @@ input {
 
     &-close {
       position: absolute;
-      right: 0;
+      right: 1.5rem;
       width: 1.5rem;
     }
 
@@ -2664,9 +2664,9 @@ input {
   }
 
   .expand-single-apartment {
-    height: calc(100vh - 15rem);
+    height: calc(100vh - 7rem);
     position: absolute;
-    top: 8.3rem;
+    top: 4rem;
     left: 0;
     z-index: 100;
     display: block;

@@ -22,7 +22,7 @@
         <li><a href="../index.html">Building</a></li>
         <li><a href="./residences.html" class="active">Apartments</a></li>
         <li><a href="./neighborhood.html">Neighborhood</a></li>
-        <li><a href="./lottery.html">Lottery</a></li>
+        <li><a href="./availability.html">Availability</a></li>
     </ul>
     <a href="tel:123-456-7890" class="lois-navigation__mobile__tabs--call" >Call</a>
 </div>
@@ -48,16 +48,47 @@
             <li class="lois-navbar-nav__tabs"><a href="../index.html">Building</a></li>
             <li class="lois-navbar-nav__tabs"><a href="./residences.html">Apartments</a></li>
             <li class="lois-navbar-nav__tabs"><a href="./neighborhood.html">Neighborhood</a></li>
-            <li class="lois-navbar-nav__tabs"><a href="./lottery.html">Lottery</a></li>
+            <li class="lois-navbar-nav__tabs"><a href="./availability.html">Availability</a></li>
             <li class="lois-navbar-nav__tabs"><a href="#modal-center" uk-toggle>Contact</a></li>
         </ul>
     </div>
 </nav>
 
+<!-- Contact start -->
+<div id="modal-center" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical modal-contact">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="modal-contact__titles">
+            <h1 class="modal-contact__titles--dark">Lorem ipsum</h1>
+            <h1 class="modal-contact__titles--light">Cnibh euismod tincid</h1>
+        </div>
+        <form class="modal-contact-form" action="">
+            <div class="modal-contact-form__section">
+                <input type="text" id="name" class="modal-contact-form__section--input" placeholder="Name">
+            </div>
+            <div class="modal-contact-form__section">
+                <input type="text" id="email" class="modal-contact-form__section--input" placeholder="Email address">
+            </div>
+            <button class="modal-contact-form--submit">Send</button>
+        </form>
+        <div class="modal-contact-info">
+            <p class="modal-contact-info--message">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
+                exerci Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </p>
+        </div>
+
+    </div>
+</div>
+<!-- Contact end -->
 
 <!-- action layer -->
 <div id="action-layer" class="lottery-layer action-layer apartments-page">
-    <div class="action-layer-view">
+    <div class="action-layer-view" id="action-layer=view">
         <div class="lottery-open" id="lottery-open">
             <h1 class="lottery-open__title--black">CALL TO ACTION LINE</h1>
         </div>
@@ -930,10 +961,12 @@
             document.getElementById("apartments-toggle").style.visibility = "hidden";
             document.getElementById("apartments-search").style.visibility = "hidden";
             document.getElementById("slide-in").style.visibility = "hidden";
+            document.getElementById("action-layer-view").style.visibility = "hidden";
         } else {
             document.getElementById("apartments-toggle").style.visibility = "visible";
             document.getElementById("apartments-search").style.visibility = "visible";
             document.getElementById("slide-in").style.visibility = "visible";
+            document.getElementById("action-layer-view").style.visibility = "visible";
         }
     }
 
