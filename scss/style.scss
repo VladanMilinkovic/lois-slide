@@ -2403,7 +2403,7 @@ input {
       @media not all and (min-resolution:.001dpcm)
       { @supports (-webkit-appearance:none) {
 
-        max-height: calc(100vh - 19.5rem);
+        max-height: calc(100vh - 12.5rem);
 
       }}
 
@@ -3335,7 +3335,6 @@ input {
 
   .lottery-open {
     display: flex;
-    align-items: center;
   }
 
   .slide-in {
