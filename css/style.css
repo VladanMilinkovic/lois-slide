@@ -2239,7 +2239,7 @@ input {
     padding: 0 0.8rem;
     margin-top: 0.8rem;
     flex-direction: column;
-    align-items: flex-start !important;
+    align-items: center;
     transition: 0.3s;
   }
 }
@@ -2249,7 +2249,7 @@ input {
     padding: 0 0.8rem;
     margin-top: 0.8rem;
     flex-direction: column;
-    align-items: flex-start !important;
+    align-items: center;
     transition: 0.3s;
   }
 }
@@ -2272,6 +2272,7 @@ input {
   font-family: "IntegralExtaBold";
   font-size: 2.2rem;
   text-transform: uppercase;
+  text-decoration: none;
   margin: 0;
   cursor: pointer;
   letter-spacing: 1px;
@@ -3461,6 +3462,26 @@ input {
 
 .pointer {
   background-image: url("../images/pointer.png");
+}
+
+.apartments-page {
+  overflow: hidden;
+  height: calc(100vh - 4rem);
+}
+.apartments-page .action-layer {
+  position: relative;
+  top: 4rem;
+}
+.apartments-page .lottery-open {
+  display: flex;
+  align-items: center;
+}
+.apartments-page .slide-in {
+  overflow-y: auto;
+  margin-top: 1.5rem;
+}
+.apartments-page .action-layer-view {
+  background-color: #ffffff;
 }
 
 /*# sourceMappingURL=style.css.map */

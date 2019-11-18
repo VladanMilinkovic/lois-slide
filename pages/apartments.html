@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lois - Apartments</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="../uikit-3.2.1/css/uikit.min.css" />
+    <!-- UIkit JS -->
+    <script src="../uikit-3.2.1/js/uikit-icons.min.js"></script>
+    <script src="../uikit-3.2.1/js/uikit.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body uk-scrollspy="cls: uk-animation-fade; target: .slide-in-cart; delay: 300; repeat: true">
+<!--Navigation start -->
+<div id="mobile" class="lois-navigation__mobile__tabs">
+    <ul class="lois-navigation__mobile__tabs__nav">
+        <li><a href="../index.html">Building</a></li>
+        <li><a href="./residences.html" class="active">Apartments</a></li>
+        <li><a href="./neighborhood.html">Neighborhood</a></li>
+        <li><a href="./lottery.html">Lottery</a></li>
+    </ul>
+    <a href="tel:123-456-7890" class="lois-navigation__mobile__tabs--call" >Call</a>
+</div>
+<nav class="lois-navigation">
+        <span class="lois-navigation--address">
+             <img src="../images/eho.svg" alt="address" class="lois-navigation--icon">
+            350 Clarkson Avenue Brooklyn NY 11226
+             <a class="number" href="tel:123-456-7890">(833) 310 3001   info@TheLois.com</a>
+        </span>
+
+    <div class="lois-navigation__mobile">
+        <img src="../images/form.svg" alt="email" id="emailIcon" class="lois-navigation__mobile-email uk-animation-fade" href="#modal-center" uk-toggle>
+        <div uk-toggle="target: #mobile; cls: show-mobile" id="mobile-icon" onclick="toggleNavIcon()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="lois-navigation-tabs">
+        <ul class="lois-navbar-nav">
+            <li class="lois-navbar-nav__tabs"><a href="../index.html">Building</a></li>
+            <li class="lois-navbar-nav__tabs"><a href="./residences.html">Apartments</a></li>
+            <li class="lois-navbar-nav__tabs"><a href="./neighborhood.html">Neighborhood</a></li>
+            <li class="lois-navbar-nav__tabs"><a href="./lottery.html">Lottery</a></li>
+            <li class="lois-navbar-nav__tabs"><a href="#modal-center" uk-toggle>Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- action layer -->
+<div id="action-layer" class="lottery-layer action-layer apartments-page">
+    <div class="action-layer-view">
+        <div class="lottery-open" id="lottery-open">
+            <h1 class="lottery-open__title--black">CALL TO ACTION LINE</h1>
+        </div>
+        <!-- Apartment search -->
+        <div id="apartments-toggle" class="apartments-toggle">
+            <img src="../images/down.svg" alt="Close">
+        </div>
+        <div class="apartments-search" onclick="showActionLine()">
+            <div class="apartments-search-select" id="apartments-search">
+                <div class="apartments-search-select__section">
+                    <div>
+                        <button class="uk-button uk-button-default" type="button">Im looking for <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <span id="lookingForValue" class="apartments-search-select__section--value">3 Bedroom</span>
+                    </div>
+                    <div uk-dropdown="animation: uk-animation-slide-top-small; duration: 300">
+                        <ul class="uk-nav uk-dropdown-nav" id="lookingFor" onclick="setSelectedValue(event, 'lookingFor', 'lookingForValue')">
+                            <li class="uk-active"><a href="#">Studio</a></li>
+                            <li><a href="#">1 Bedroom</a></li>
+                            <li><a href="#">2 Bedroom</a></li>
+                            <li><a href="#">3 Bedroom</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="apartments-search-select__section">
+                    <div>
+                        <button class="uk-button uk-button-default" type="button">$ Minimum <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <span id="minimumValue" class="apartments-search-select__section--value">2000</span>
+                    </div>
+                    <div uk-dropdown="animation: uk-animation-slide-top-small; duration: 300">
+                        <ul class="uk-nav uk-dropdown-nav" id="minimum" onclick="setSelectedValue(event, 'minimum', 'minimumValue')">
+                            <li class="uk-active"><a href="#">2000</a></li>
+                            <li><a href="#">3000</a></li>
+                            <li><a href="#">4000</a></li>
+                            <li><a href="#">5000</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="apartments-search-select__section">
+                    <div>
+                        <button class="uk-button uk-button-default" type="button">$ Maximum <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <span id="maximumValue" class="apartments-search-select__section--value">2000</span>
+                    </div>
+                    <div uk-dropdown="animation: uk-animation-slide-top-small; duration: 300">
+                        <ul class="uk-nav uk-dropdown-nav" id="maximum" onclick="setSelectedValue(event, 'maximum', 'maximumValue')">
+                            <li class="uk-active"><a href="#">2000</a></li>
+                            <li><a href="#">3000</a></li>
+                            <li><a href="#">4000</a></li>
+                            <li><a href="#">5000</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Slide in Apartments -->
+    <div id="slide-in" class="slide-in uk-animation-fade">
+        <div class="slide-in-cart" id="cart-1" onclick="showSelectedSlide('cart-1')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-in-cart" id="cart-2" onclick="showSelectedSlide('cart-2')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-in-cart" id="cart-3" onclick="showSelectedSlide('cart-3')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-in-cart" id="cart-4" onclick="showSelectedSlide('cart-4')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-in-cart" id="cart-5" onclick="showSelectedSlide('cart-5')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-in-cart" id="cart-6" onclick="showSelectedSlide('cart-6')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-in-cart" id="cart-7" onclick="showSelectedSlide('cart-7')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-in-cart" id="cart-8" onclick="showSelectedSlide('cart-8')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="slide-in-cart" id="cart-9" onclick="showSelectedSlide('cart-9')">
+            <div class="slide-in-cart-container">
+                <div class="slide-in-cart__image" style="display:block">
+                    <div class="building-image--bg building-second-description--bg" style="background-image: url('../images/Rectangle 5@2x.png')"></div>
+                </div>
+                <div class="slide-in-cart__slider" style="display: none">
+                    <!-- Slider -->
+                    <div class="slider-box" uk-slideshow="animation: pull">
+                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                                <li>
+                                    <img src="../images/Rectangle 5@2x.png" alt="" uk-cover>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin lois-dots"></ul>
+                    </div>
+                    <!-- End Slider -->
+                </div>
+                <div class="slide-in-cart__content">
+                    <h2 class="slide-in-cart__content--black">3 BEDROOM <div class="divider"></div> 2 BATH</h2>
+                    <h2 class="slide-in-cart__content--white">120 <div class="divider"></div> $2000</h2>
+                    <a  class="slide-in-cart__content--link" href="#">Learn More</a>
+                    <div class="slide-in-cart__content-mobile" style="display: none">
+                        <p class="slide-in-cart__content-mobile-info">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Slide in apartments -->
+    <!-- Single apartment -->
+    <div class="building single-apartment uk-animation-fade uk-animation-fast" id="single-apartment">
+
+        <div class="building__first">
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+
+                <ul class="uk-slideshow-items">
+                    <li>
+                        <img src="../images/Screen%20Shot%202019-10-08%20at%203.23.05%20PM@2x.png" alt="" uk-cover>
+                    </li>
+                    <li>
+                        <img src="../images/62ce007bb4af45c55d5a432ecbebb682.jpg" alt="" uk-cover>
+                    </li>
+                    <li>
+                        <img src="../images/67ecc3ab4f0af7dc46f945519fdafb29.jpg" alt="" uk-cover>
+                    </li>
+                </ul>
+
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+            </div>
+
+            <div class="building-first-description">
+                <div class="description-text">
+                    <img src="../images/close.svg" class="description-text-close" alt="Close" onclick="closeSingleLayer()">
+                    <h2 class="description-text--black">3 BED<div class="divider"></div>2 BATH</h2>
+                    <h2 class="description-text--white">120<div class="divider"></div>$2000</h2>
+                    <div class="content-wrapper">
+                        <p class="description-text--content">
+                            Welcome to The Clark, a new rental building that puts the best of Brooklyn within reach.
+                            Nestled in Prospect Lefferts Gardens, in the heart of Brooklyn, comes something fresh, modern and accessible.
+                            With a short work to the iconic Prospect Park and a quick 45-minute commute into 34th Street-Herald Square
+                            via the 2,5 trains @Winthrop Street as well as the Q @ Parkside Avenue. Convenience is key.
+                            This unit has great southwestern exposure for ample afternoon and early evening sunlight. While every apartment at The Clark
+                            is designed from the ground up with your style and convenience in mind. Wherever you put your bed, couch or dining room
+                            table, you can’t go wrong when you’re working with spaces that feature smart open layouts such as ours!
+                            Constructed to be environmentally conscious, The Clark has risen to meet LEED Silver and Energy Star Standards,
+                            making one of the greenest buildings in Prospect Lefferts Gardens
+                        </p>
+                        <p class="highlights">Floorplan</p>
+                        <div class="floorplan">
+                            <img src="../images/plan.svg" alt="plan">
+                            <a href="../files/samplePDF.pdf" target="_blank">Download</a>
+                        </div>
+
+                        <p class="highlights">Unit Features:</p>
+                        <ul>
+                            <li>Oak Hardwood Floors</li>
+                            <li>Stainless Steel GE Appliances</li>
+                            <li>Caesarstone Countertops</li>
+                            <li>Bosch Washer/Dryer</li>
+                            <li>Modern Tiled Batht</li>
+                            <li>Oversized Windows</li>
+                        </ul>
+                        <p class="highlights">Building Amenities:</p>
+                        <ul>
+                            <li>Attended Lobby</li>
+                            <li>Package Room for Fresh Deliveries</li>
+                            <li>Covered Parking</li>
+                            <li>Indoor Bike Room</li>
+                            <li>Storage Lockers</li>
+                            <li>Dog Run and Washing Station</li>
+                            <li>Fitness Center</li>
+                            <li>Yoga Room</li>
+                            <li>Quiet Co-working area</li>
+                            <li>Resident Lounge with TV, WiFi, and Connected Terracea</li>
+                            <li>Landscaped Rooftop Terrace with BBQ’s</li>
+                            <li>Private Rooftop Garden Plots</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- end Single apartment -->
+</div>
+<!-- action layer end -->
+
+<script>
+    let openCards = [];
+    let screenWidth = window.matchMedia("(max-width: 700px)");
+
+    function showActionLine() {
+        if (screenWidth.matches) { // If media query matches
+            document.getElementById("lottery-open").style.display = "block";
+        }
+    }
+
+    function getEventTarget(e) {
+        e = e || window.event;
+        return e.target || e.srcElement;
+    }
+
+    function setSelectedValue(event, id, setValue) {
+
+        event.preventDefault();
+
+        let target = getEventTarget(event);
+        document.getElementById(setValue).innerHTML = target.innerHTML;
+    }
+
+    function showSelectedSlide(id) {
+
+        let check = false;
+        (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+        if(check) {
+            showMore(id);
+
+            return false;
+        }
+
+        let element = document.getElementById("single-apartment");
+        element.classList.toggle("expand-single-apartment");
+
+        if(element.classList.contains("expand-single-apartment")) {
+            document.getElementById("apartments-toggle").style.visibility = "hidden";
+            document.getElementById("apartments-search").style.visibility = "hidden";
+            document.getElementById("slide-in").style.visibility = "hidden";
+        } else {
+            document.getElementById("apartments-toggle").style.visibility = "visible";
+            document.getElementById("apartments-search").style.visibility = "visible";
+            document.getElementById("slide-in").style.visibility = "visible";
+        }
+    }
+
+    function closeSingleLayer() {
+        let element = document.getElementById("single-apartment");
+        element.classList.remove("expand-single-apartment");
+        document.getElementById("apartments-toggle").style.visibility = "visible";
+        document.getElementById("apartments-search").style.visibility = "visible";
+        document.getElementById("slide-in").style.visibility = "visible";
+    }
+
+    function showMore(id) {
+        let check = false;
+        (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|iphone|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+
+        if(openCards.length) {
+            for(let i = 0; i < openCards.length; i++) {
+                let el = document.getElementById(openCards[i]);
+
+                let text = el.getElementsByClassName("slide-in-cart__content-mobile")[0];
+                let singleImage = el.getElementsByClassName("slide-in-cart__image")[0];
+                let slider = el.getElementsByClassName("slide-in-cart__slider")[0];
+                let link = el.getElementsByClassName("slide-in-cart__content--link")[0];
+
+                text.style.display = "none";
+                slider.style.display = "none";
+                singleImage.style.display = "block";
+                link.innerHTML = "Learn More";
+            }
+
+        }
+
+        if(check) {
+
+            let el = document.getElementById(id);
+
+            let text = el.getElementsByClassName("slide-in-cart__content-mobile")[0];
+            let singleImage = el.getElementsByClassName("slide-in-cart__image")[0];
+            let slider = el.getElementsByClassName("slide-in-cart__slider")[0];
+            let link = el.getElementsByClassName("slide-in-cart__content--link")[0];
+
+            if(slider.style.display === "none") {
+                text.style.display = "block";
+                slider.style.display = "block";
+                singleImage.style.display = "none";
+                link.innerHTML = "";
+            }
+
+            if(openCards.includes(id)) {
+                return;
+            }
+
+        }
+
+        openCards.push(id);
+    }
+</script>
+</body>
+</html>
