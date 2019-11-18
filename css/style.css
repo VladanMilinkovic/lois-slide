@@ -2870,7 +2870,7 @@ input {
 @media (min-width: 0px) and (max-width: 599px) {
   .apartments-search {
     font-size: 1.15rem;
-    margin: 0.8rem 0.8rem 0 0.8rem;
+    margin: 0 0.8rem;
   }
 }
 @media (min-width: 600px) and (max-width: 899px) {
@@ -3466,7 +3466,7 @@ input {
 
 .apartments-page {
   overflow: hidden;
-  height: calc(100vh - 4rem);
+  height: 100%;
 }
 .apartments-page .action-layer {
   position: relative;
@@ -3482,6 +3482,17 @@ input {
 }
 .apartments-page .action-layer-view {
   background-color: #ffffff;
+  margin-top: 4rem;
+}
+@media (min-width: 0px) and (max-width: 599px) {
+  .apartments-page .action-layer-view {
+    min-height: 7.5rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  .apartments-page .expand-single-apartment {
+    top: 12rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -2722,7 +2722,7 @@ input {
 
   @include breakpoint(mobileScreen) {
     font-size: 1.15rem;
-    margin: .8rem .8rem 0 .8rem;
+    margin: 0 .8rem;
   }
 
   @include multiple-media(tabletScreen, tabletScreenLandscape) {
@@ -3326,7 +3326,7 @@ input {
 
 .apartments-page {
   overflow: hidden;
-  height: calc(100vh - 4rem);
+  height: 100%;
 
   .action-layer {
     position: relative;
@@ -3345,5 +3345,16 @@ input {
 
   .action-layer-view {
     background-color: #ffffff;
+    margin-top: 4rem;
+
+    @include multiple-media(mobileScreen) {
+      min-height: 7.5rem;
+    }
+  }
+
+  .expand-single-apartment {
+    @include multiple-media(tabletScreen) {
+      top: 12rem;
+    }
   }
 }
