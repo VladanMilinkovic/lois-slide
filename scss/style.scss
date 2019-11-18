@@ -2675,8 +2675,8 @@ input {
     @media not all and (min-resolution:.001dpcm)
     { @supports (-webkit-appearance:none) {
 
-      height: calc(100vh - 14.5rem);
-      top: 7.6rem;
+      height: calc(100vh - 7rem);
+      top: 4rem;
     }}
 
     .building-first-description {
